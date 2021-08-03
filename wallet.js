@@ -28,4 +28,10 @@
         }
         return source;
     }
+
+    // Initialize
+    function wallet() {
+        console.log(this.options);
+    }
+
 } ());
