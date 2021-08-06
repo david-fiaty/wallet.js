@@ -13,3 +13,4 @@ let ap = new applePay(config);
 
 gp.test();
 ap.test();
+
