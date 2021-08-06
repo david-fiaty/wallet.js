@@ -9,6 +9,17 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./src/js/app.js":
+/*!***********************!*\
+  !*** ./src/js/app.js ***!
+  \***********************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+eval("\n\nmodule.exports = {\n\tplugins: [\n\t\t__webpack_require__(/*! ./wallet */ \"./src/js/wallet.js\")\n\t]\n};\n\n\n\n//# sourceURL=webpack://wallet.js/./src/js/app.js?");
+
+/***/ }),
+
 /***/ "./src/js/psp/applepay.js":
 /*!********************************!*\
   !*** ./src/js/psp/applepay.js ***!
@@ -33,9 +44,10 @@ eval("module.exports = class GooglePay {\n    constructor(config) {\n        thi
 /*!**************************!*\
   !*** ./src/js/wallet.js ***!
   \**************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("const GooglePay = __webpack_require__(/*! ./psp/googlepay */ \"./src/js/psp/googlepay.js\");\nconst ApplePay = __webpack_require__(/*! ./psp/applepay */ \"./src/js/psp/applepay.js\");\n\nmodule.exports = class Wallet {\n    constructor(config) {\n        let gp = new GooglePay(config);\n    }\n}\n\n\n\n//# sourceURL=webpack://wallet.js/./src/js/wallet.js?");
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"Wallet\": () => (/* binding */ Wallet)\n/* harmony export */ });\n\n\nconst GooglePay = __webpack_require__(/*! ./psp/googlepay */ \"./src/js/psp/googlepay.js\");\nconst ApplePay = __webpack_require__(/*! ./psp/applepay */ \"./src/js/psp/applepay.js\");\n\nclass Wallet {\n\tconstructor(config) {\n\t\tconsole.log('wallet loaded');\n\t}\n}\n\n\n//# sourceURL=webpack://wallet.js/./src/js/wallet.js?");
 
 /***/ })
 
@@ -66,11 +78,40 @@ eval("const GooglePay = __webpack_require__(/*! ./psp/googlepay */ \"./src/js/ps
 /******/ 	}
 /******/ 	
 /************************************************************************/
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	(() => {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = (exports) => {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/************************************************************************/
 /******/ 	
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module is referenced by other modules so it can't be inlined
-/******/ 	var __webpack_exports__ = __webpack_require__("./src/js/wallet.js");
+/******/ 	var __webpack_exports__ = __webpack_require__("./src/js/app.js");
 /******/ 	
 /******/ })()
 ;
