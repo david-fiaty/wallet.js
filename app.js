@@ -7,6 +7,7 @@ let config = {
     p3: 'p3'
 };
 
+
 let gp = new googlePay(config);
 let ap = new applePay(config);
 

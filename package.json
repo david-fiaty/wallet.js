@@ -22,7 +22,5 @@
     "url": "https://github.com/david-fiaty/wallet.js/issues"
   },
   "homepage": "https://github.com/david-fiaty/wallet.js#readme",
-  "dependencies": {
-    "dotenv": "^10.0.0"
-  }
+  "dependencies": {}
 }
