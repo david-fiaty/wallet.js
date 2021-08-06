@@ -1,9 +1,15 @@
 <script src="wallet.js"></script>
 <script>
-    var test = new Wallet({
-        param1: '1',
-        param2: '2',
-        param3: 'false'
+
+    // Initialize the payment
+    let payment = new Wallet({
+        type: 'googlePay',
+        config: {
+
+        }
     });
+
+    // Test
+    console.log(payment);
 
 </script>

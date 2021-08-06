@@ -1,24 +1,35 @@
-(function() {
-    // Defaults
-    var defaults = {
-        param1: 600,
-        param2: 280,
-        param3: true
-    }
+// Create an immediately invoked functional expression to wrap our code
+(function () {
+	// Constructor
+	this.Wallet = function () {
+		// Global properties
+		this.p1 = null;
+		this.p2 = null;
+		this.p3 = null;
 
-    // Constructor
-    this.Wallet = function() {
-        this.param1 = 'test 1';
-        this.param2 = 'test 2';
-        this.param3 = 'test 3';
+		// Default options
+		var defaults = {
+			p1: '',
+			p2: '',
+			p3: ''
+		}
 
-        // Initialize
-        this.init = function () {
-            console.log(this);
-        }
+		// Extend defaults
+		if (arguments[0] && typeof arguments[0] === "object") {
+			this.options = load(defaults, arguments[0]);
+		}
+	}
 
-        this.init();
+	// Option loader
+	function load(source, properties) {
+		var property;
+		for (property in properties) {
+			if (properties.hasOwnProperty(property)) {
+				source[property] = properties[property];
+			}
+		}
 
-    }
+		return source;
+	}
 
-} ());
+}());
