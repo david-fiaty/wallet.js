@@ -2,7 +2,7 @@
   "name": "wallet.js",
   "version": "1.0.0",
   "description": "Javascript plugin for ApplePay and GooglePay payments",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -22,5 +22,9 @@
     "url": "https://github.com/david-fiaty/wallet.js/issues"
   },
   "homepage": "https://github.com/david-fiaty/wallet.js#readme",
-  "dependencies": {}
+  "dependencies": {},
+  "devDependencies": {
+    "webpack": "^5.49.0",
+    "webpack-cli": "^4.7.2"
+  }
 }
