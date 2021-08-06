@@ -1,0 +1,28 @@
+{
+  "name": "wallet.js",
+  "version": "1.0.0",
+  "description": "Javascript plugin for ApplePay and GooglePay payments",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/david-fiaty/wallet.js.git"
+  },
+  "keywords": [
+    "Javascript",
+    "Plugin",
+    "ApplePay",
+    "GooglePay"
+  ],
+  "author": "David Fiaty",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/david-fiaty/wallet.js/issues"
+  },
+  "homepage": "https://github.com/david-fiaty/wallet.js#readme",
+  "dependencies": {
+    "dotenv": "^10.0.0"
+  }
+}
