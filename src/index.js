@@ -1,6 +1,8 @@
-var googlePay = require('./scripts/psp/googlepay');
-var applePay = require('./scripts/psp/applepay');
+var GooglePay = require('./scripts/psp/googlepay');
+var ApplePay = require('./scripts/psp/applepay');
 
+
+/*
 let config = {
     p1: 'p1',
     p2: 'p2',
@@ -11,6 +13,4 @@ let config = {
 let gp = new googlePay(config);
 let ap = new applePay(config);
 
-gp.test();
-ap.test();
-
+*/
