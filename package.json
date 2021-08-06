@@ -2,6 +2,7 @@
   "name": "wallet.js",
   "version": "1.0.0",
   "description": "Javascript plugin for ApplePay and GooglePay payments",
+  "private": true,
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
