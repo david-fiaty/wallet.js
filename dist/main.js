@@ -1,39 +1,45 @@
+/*
+ * ATTENTION: The "eval" devtool has been used (maybe by default in mode: "development").
+ * This devtool is neither made for production nor for readable output files.
+ * It uses "eval()" calls to create a separate source file in the browser devtools.
+ * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
+ * or disable the default devtool with "devtool: false".
+ * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
+ */
 /******/ (() => { // webpackBootstrap
-/******/ 	var __webpack_modules__ = ([
-/* 0 */,
-/* 1 */
+/******/ 	var __webpack_modules__ = ({
+
+/***/ "./src/js/psp/applepay.js":
+/*!********************************!*\
+  !*** ./src/js/psp/applepay.js ***!
+  \********************************/
 /***/ ((module) => {
 
-module.exports = class GooglePay {
-    constructor(config) {
-        this.config = config;
-    }
-
-    test() {
-        console.log('GooglePay');
-        console.log(this.config);
-    }
-}
-
-
+eval("module.exports = class ApplePay {\n    constructor(config) {\n        this.config = config;\n    }\n\n    test() {\n        console.log('ApplePay');\n        console.log(this.config);\n    }\n}\n\n//# sourceURL=webpack://wallet.js/./src/js/psp/applepay.js?");
 
 /***/ }),
-/* 2 */
+
+/***/ "./src/js/psp/googlepay.js":
+/*!*********************************!*\
+  !*** ./src/js/psp/googlepay.js ***!
+  \*********************************/
 /***/ ((module) => {
 
-module.exports = class ApplePay {
-    constructor(config) {
-        this.config = config;
-    }
+eval("module.exports = class GooglePay {\n    constructor(config) {\n        this.config = config;\n    }\n\n    test() {\n        console.log('GooglePay');\n        console.log(this.config);\n    }\n}\n\n\n\n//# sourceURL=webpack://wallet.js/./src/js/psp/googlepay.js?");
 
-    test() {
-        console.log('ApplePay');
-        console.log(this.config);
-    }
-}
+/***/ }),
+
+/***/ "./src/js/wallet.js":
+/*!**************************!*\
+  !*** ./src/js/wallet.js ***!
+  \**************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("const GooglePay = __webpack_require__(/*! ./psp/googlepay */ \"./src/js/psp/googlepay.js\");\nconst ApplePay = __webpack_require__(/*! ./psp/applepay */ \"./src/js/psp/applepay.js\");\n\nmodule.exports = class Wallet {\n    constructor(config) {\n        let gp = new GooglePay(config);\n    }\n}\n\n\n\n//# sourceURL=webpack://wallet.js/./src/js/wallet.js?");
 
 /***/ })
-/******/ 	]);
+
+/******/ 	});
 /************************************************************************/
 /******/ 	// The module cache
 /******/ 	var __webpack_module_cache__ = {};
@@ -60,26 +66,11 @@ module.exports = class ApplePay {
 /******/ 	}
 /******/ 	
 /************************************************************************/
-var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
-(() => {
-var googlePay = __webpack_require__(1);
-var applePay = __webpack_require__(2);
-
-let config = {
-    p1: 'p1',
-    p2: 'p2',
-    p3: 'p3'
-};
-
-
-let gp = new googlePay(config);
-let ap = new applePay(config);
-
-gp.test();
-ap.test();
-
-})();
-
+/******/ 	
+/******/ 	// startup
+/******/ 	// Load entry module and return exports
+/******/ 	// This entry module is referenced by other modules so it can't be inlined
+/******/ 	var __webpack_exports__ = __webpack_require__("./src/js/wallet.js");
+/******/ 	
 /******/ })()
 ;
