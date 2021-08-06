@@ -1,4 +1,4 @@
-var googlePay = require('./srcipts/psp/googlepay');
+var googlePay = require('./scripts/psp/googlepay');
 var applePay = require('./scripts/psp/applepay');
 
 let config = {
