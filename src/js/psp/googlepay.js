@@ -1,5 +1,6 @@
 'use strict';
 
+require('../../css/googlepay.css');
 var script = require('scriptjs');
 
 module.exports = class GooglePay {
