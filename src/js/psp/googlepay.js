@@ -31,7 +31,7 @@ module.exports = class GooglePay {
     loadGooglePay()
     {
         var self = this;
-        this.client = this.getGooglePaymentsClient();
+        this.client = this.getPaymentClient();
 
         self.client.isReadyToPay({ 
             allowedPaymentMethods: self.params.config.allowedPaymentMethods
@@ -39,7 +39,7 @@ module.exports = class GooglePay {
         .then(
             function (response) {
                 if (response.result) {
-                    self.prefetchGooglePaymentData();
+                    self.prefetchPaymentData();
                 }
             }
         )
@@ -51,9 +51,9 @@ module.exports = class GooglePay {
 
     }
 
-    prefetchGooglePaymentData()
+    prefetchPaymentData()
     {
-        var paymentDataRequest = this.getGooglePaymentDataConfiguration();
+        var paymentDataRequest = this.getPaymentData();
 
         // TransactionInfo must be set but does not affect cache
         paymentDataRequest.transactionInfo = {
@@ -64,7 +64,7 @@ module.exports = class GooglePay {
         this.client.prefetchPaymentData(paymentDataRequest);
     }
 
-    getGooglePaymentDataConfiguration ()
+    getPaymentData ()
     {
         return {
             merchantId: this.params.config.merchantId,
@@ -82,7 +82,7 @@ module.exports = class GooglePay {
         };
     }
 
-    getGooglePaymentsClient()
+    getPaymentClient()
     {
         return (new google.payments.api.PaymentsClient(
             {
