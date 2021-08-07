@@ -8,12 +8,20 @@ module.exports = class GooglePay {
         this.params = params;
 
         this.createButton();
+        this.createEvent();
+
     }
 
     createButton () {
         document.getElementById('wallet').classList.add(
             'google-pay-button-' + this.params.config.buttonStyle
         );
+    }
+
+    createEvent () {
+        document.getElementById('wallet').addEventListener('click', function () {
+            console.log('button click');
+        });
     }
 
     init() {
