@@ -1,4 +1,4 @@
-const googlePayClient = require('@google-pay/button-element/dist');
+'use strict';
 
 module.exports = class GooglePay {
     constructor(config) {

@@ -1,4 +1,4 @@
-const applePayClient = require('apple-pay-server-client');
+'use strict';
 
 module.exports = class ApplePay {
     constructor(config) {
