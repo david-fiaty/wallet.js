@@ -28,9 +28,23 @@ module.exports = class GooglePay {
         // Button event
         button.addEventListener('click', function () {    
             self.preparePayment();
-
-            //self.pay()
+            self.requestPayment();
         });
+    }
+
+    requestPayment () {
+        var paymentData = this.getPaymentData();
+
+        this.client.loadPaymentData(paymentData).then(
+            function (paymentData) {
+                // handle the response
+                //processPayment(paymentData);
+            }
+        ).catch(
+            function (error) {
+                console.log(error);
+            }
+        );
     }
 
     preparePayment()
@@ -53,20 +67,19 @@ module.exports = class GooglePay {
                 console.log(err);
             }
         );
-
     }
 
     prefetchPaymentData()
     {
-        var paymentDataRequest = this.getPaymentData();
+        this.paymentData = this.getPaymentData();
 
         // TransactionInfo must be set but does not affect cache
-        paymentDataRequest.transactionInfo = {
+        this.paymentData.transactionInfo = {
             totalPriceStatus: 'NOT_CURRENTLY_KNOWN',
             currencyCode: this.params.payment.currencyCode,
         };
 
-        this.client.prefetchPaymentData(paymentDataRequest);
+        this.client.prefetchPaymentData(this.paymentData);
     }
 
     getPaymentData ()
@@ -83,7 +96,8 @@ module.exports = class GooglePay {
             allowedPaymentMethods: this.params.config.allowedPaymentMethods,
             cardRequirements: {
                 allowedCardNetworks: this.params.config.allowedCardNetworks
-            }
+            },
+            transactionInfo: this.params.payment
         };
     }
 
