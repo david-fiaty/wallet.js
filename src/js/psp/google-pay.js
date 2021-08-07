@@ -7,8 +7,19 @@ const helper = require('core/helper');
 module.exports = class GooglePay {
     constructor(params) {
         var defaults = {
-            d1: 'def1',
-            d2: 'def2',
+            config: {
+                environment: 'TEST',
+                buttonStyle: 'white',
+                allowedPaymentMethods: ['AMEX', 'DISCOVER', 'INTERAC', 'JCB', 'MASTERCARD', 'VISA'],
+                allowedCardNetworks: ['AMEX', 'DISCOVER', 'INTERAC', 'JCB', 'MASTERCARD', 'VISA'],
+                allowedCardAuthMethods: ['PAN_ONLY', 'CRYPTOGRAM_3DS'],
+            },
+            payment: {
+                currencyCode: 'USD',
+                totalPriceStatus: 'FINAL',
+                totalPrice: 11.00,
+                tokenizationType: 'PAYMENT_GATEWAY',
+            }
         };
 
         this.params = helper.extendDefaults(defaults, params);
