@@ -10,8 +10,8 @@ var wallet = new Wallet({
     type: 'googlepay',
     config: {
         environment: 'TEST',
-        merchantId: 'merchantId',
-        gatewayName: 'gatewayName',
+        merchantId: 'pk_test_f4be3224-70a5-4441-be9b-abb59e3fcd31',
+        gatewayName: 'checkoutltd',
         buttonStyle: 'white',
         allowedPaymentMethods: ['CARD', 'TOKENIZED_CARD'],
         allowedCardNetworks: ['VISA', 'MASTERCARD'],
@@ -19,7 +19,8 @@ var wallet = new Wallet({
     payment: {
         currencyCode: 'USD',
         totalPriceStatus: 'FINAL',
-        totalPrice: 11.00
+        totalPrice: 11.00,
+        tokenizationType: 'PAYMENT_GATEWAY',
     }
 });
 

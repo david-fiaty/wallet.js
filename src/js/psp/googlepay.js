@@ -103,7 +103,7 @@ module.exports = class GooglePay {
         return {
             merchantId: this.params.config.merchantId,
             paymentMethodTokenizationParameters: {
-                tokenizationType: this.params.config.tokenizationType,
+                tokenizationType: this.params.payment.tokenizationType,
                 parameters: {
                     'gateway': this.params.config.gatewayName,
                     'gatewayMerchantId': this.params.config.merchantId,
