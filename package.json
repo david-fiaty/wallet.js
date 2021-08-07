@@ -24,7 +24,10 @@
     "url": "https://github.com/david-fiaty/wallet.js/issues"
   },
   "homepage": "https://github.com/david-fiaty/wallet.js#readme",
-  "dependencies": {},
+  "dependencies": {
+    "@google-pay/button-element": "^2.5.0",
+    "apple-pay-server-client": "^1.0.9"
+  },
   "devDependencies": {
     "@babel/core": "^7.15.0",
     "@babel/preset-env": "^7.15.0",

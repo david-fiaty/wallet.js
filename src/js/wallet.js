@@ -9,7 +9,8 @@ module.exports = class Wallet {
 	}
 
 	pay() {
-		let gp = new  GooglePay(this.config);
-		gp.test();
+		console.log(g);
+		//let gp = new  GooglePay(this.config);
+		//gp.test();
 	}
 }
