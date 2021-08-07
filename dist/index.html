@@ -6,10 +6,18 @@
 
 <script>
 var wallet = new Wallet({
-    targetId: '#wallet',
+    targetId: 'wallet',
     type: 'googlepay',
     config: {
-        buttonStyle: 'white'
+        environment: 'TEST',
+        merchantId: 'merchantId',
+        gatewayName: 'gatewayName',
+        buttonStyle: 'white',
+        allowedPaymentMethods: ['CARD', 'TOKENIZED_CARD'],
+        allowedCardNetworks: ['VISA', 'MASTERCARD'],
+    },
+    payment: {
+        currencyCode: 'USD'
     }
 });
 

@@ -7,8 +7,7 @@ module.exports = class Wallet {
     constructor(config) {
 		this.config = config;
 
-		let gp = new  GooglePay(this.config);
-		gp.createButton();
+		let gp = new GooglePay(this.config);
 
 	}
 
