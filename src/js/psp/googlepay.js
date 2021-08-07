@@ -7,21 +7,23 @@ module.exports = class GooglePay {
     constructor(params) {
         this.params = params;
 
+        this.init();
+    }
+
+    init () {
+        // Prepare variables
+        var self = this;
+        var button = document.getElementById(this.params.targetId);
+        var buttonClass = 'google-pay-button-' + this.params.config.buttonStyle;
+
+        // Load the remote script
         script(process.env.GOOGLE_PAY_SCRIPT);
 
-        this.createButton();
-        this.createEvent();
-    }
+        // Button display
+        button.classList.add(buttonClass);
 
-    createButton () {
-        document.getElementById('wallet').classList.add(
-            'google-pay-button-' + this.params.config.buttonStyle
-        );
-    }
-
-    createEvent () {
-        var self = this;
-        document.getElementById('wallet').addEventListener('click', function () {    
+        // Button event
+        button.addEventListener('click', function () {    
             self.loadGooglePay()
         });
     }
