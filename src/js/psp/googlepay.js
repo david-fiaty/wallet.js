@@ -10,6 +10,11 @@ module.exports = class GooglePay {
 
     test() {
         var self = this;
+
+        var textnode = document.createTextNode("Water")
+        document.getElementById('wallet').appendChild(textnode);
+
+
         script(process.env.GOOGLE_PAY_SCRIPT, function() {
             // Initialize Google Pay
             console.log('GooglePay');
