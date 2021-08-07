@@ -1,14 +1,14 @@
 'use strict';
 
-module.exports = class Helper {
-	
+module.exports = {
 	extendDefaults(source, properties) {
-		var property;
+		let property;
 		for (property in properties) {
 		  if (properties.hasOwnProperty(property)) {
 			source[property] = properties[property];
 		  }
 		}
+
 		return source;
 	}
 }

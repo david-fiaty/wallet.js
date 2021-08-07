@@ -40,8 +40,13 @@ module.exports = class GooglePay {
         var self = this;
         this.client = this.getPaymentClient();
 
-        self.client.isReadyToPay({ 
-            allowedPaymentMethods: self.params.config.allowedPaymentMethods
+
+        console.log('------');
+
+        console.log(this.params);
+
+        this.client.isReadyToPay({ 
+            allowedPaymentMethods: this.params.config.allowedPaymentMethods
         })
         .then(
             function (response) {
