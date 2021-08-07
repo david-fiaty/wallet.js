@@ -32,20 +32,6 @@ module.exports = class GooglePay {
         });
     }
 
-    requestPayment () {
-        var paymentData = this.getPaymentData();
-
-        this.client.loadPaymentData(paymentData).then(
-            function (paymentData) {
-                // handle the response
-                //processPayment(paymentData);
-            }
-        ).catch(
-            function (error) {
-                console.log(error);
-            }
-        );
-    }
 
     preparePayment()
     {
@@ -68,6 +54,36 @@ module.exports = class GooglePay {
             }
         );
     }
+
+    requestPayment () {
+        var paymentData = this.getPaymentData();
+        var self = this;
+
+        this.client.loadPaymentData(paymentData).then(
+            function (paymentData) {
+                self.sendRequest(paymentData);
+            }
+        ).catch(
+            function (error) {
+                console.log(error);
+            }
+        );
+    }
+
+    sendRequest(paymentData) {
+        // Prepare the payload
+        var payload = {
+            cardToken: {
+                signature: JSON.parse(paymentData.paymentMethodToken.token).signature,
+                protocolVersion: JSON.parse(paymentData.paymentMethodToken.token).protocolVersion,
+                signedMessage: JSON.parse(paymentData.paymentMethodToken.token).signedMessage,
+            },
+        };
+
+        // Send the request
+        console.log(payload);
+    }
+    
 
     prefetchPaymentData()
     {
