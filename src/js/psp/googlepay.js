@@ -11,8 +11,9 @@ module.exports = class GooglePay {
     test() {
         var self = this;
 
-        var textnode = document.createTextNode("Water")
-        document.getElementById('wallet').appendChild(textnode);
+        //var textnode = document.createTextNode("Water")
+        //document.getElementById('wallet').appendChild(textnode);
+        document.getElementById('wallet').classList.add('google-pay-button-white');
 
         // Initialize Google Pay
         script(process.env.GOOGLE_PAY_SCRIPT, function() {
