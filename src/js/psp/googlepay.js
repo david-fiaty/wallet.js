@@ -1,7 +1,7 @@
 'use strict';
 
-require('dotenv').config();
 var script = require('scriptjs');
+
 module.exports = class GooglePay {
     constructor(config) {
         this.config = config;
