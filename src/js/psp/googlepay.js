@@ -22,13 +22,18 @@ module.exports = class GooglePay {
         // Button display
         button.classList.add(buttonClass);
 
+        // Prepare payment
+        //this.preparePayment();
+
         // Button event
         button.addEventListener('click', function () {    
-            self.loadGooglePay()
+            self.preparePayment();
+
+            //self.pay()
         });
     }
 
-    loadGooglePay()
+    preparePayment()
     {
         var self = this;
         this.client = this.getPaymentClient();
