@@ -1,0 +1,29 @@
+ <script src="wallet.js"></script>
+
+
+ <button id="wallet" type="button" class="google-pay"></button>
+
+
+<script>
+var wallet = new Wallet({
+    targetId: '#wallet',
+    type: 'googlepay',
+    config: {
+        buttonStyle: 'white'
+    }
+});
+
+//wallet.pay();
+
+// google pay options
+/*
+button_selector
+allowed_card_networks VISA,MASTERCARD
+button_style white,black
+allowed_payment_methods CARD,TOKENIZED_CARD
+
+gateway
+gatewayMerchantId
+
+*/
+</script>
