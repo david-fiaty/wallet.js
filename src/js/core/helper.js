@@ -1,14 +1,13 @@
 'use strict';
 
 module.exports = {
-	extendDefaults(source, properties) {
-		let property;
-		for (property in properties) {
-		  if (properties.hasOwnProperty(property)) {
-			source[property] = properties[property];
+	extendDefaults: function(defaults, params) {
+		for (let p in params) {
+		  if (params.hasOwnProperty(p)) {
+			defaults[p] = params[p];
 		  }
 		}
 
-		return source;
-	}
+		return defaults;
+	},
 }

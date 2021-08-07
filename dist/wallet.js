@@ -28,7 +28,7 @@ eval("\n\nvar Wallet = __webpack_require__(/*! core/wallet */ \"./src/js/core/wa
 /***/ ((module) => {
 
 "use strict";
-eval("\n\nmodule.exports = {\n  extendDefaults: function extendDefaults(source, properties) {\n    var property;\n\n    for (property in properties) {\n      if (properties.hasOwnProperty(property)) {\n        source[property] = properties[property];\n      }\n    }\n\n    return source;\n  }\n};\n\n//# sourceURL=webpack://Wallet/./src/js/core/helper.js?");
+eval("\n\nmodule.exports = {\n  extendDefaults: function extendDefaults(defaults, params) {\n    for (var p in params) {\n      if (params.hasOwnProperty(p)) {\n        defaults[p] = params[p];\n      }\n    }\n\n    return defaults;\n  }\n};\n\n//# sourceURL=webpack://Wallet/./src/js/core/helper.js?");
 
 /***/ }),
 
