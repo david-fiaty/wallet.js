@@ -6,6 +6,7 @@
  * or disable the default devtool with "devtool: false".
  * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
  */
+var Wallet;
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
@@ -16,7 +17,7 @@
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
-eval("\n\nmodule.exports = {\n\tplugins: [\n\t\t__webpack_require__(/*! ./wallet */ \"./src/js/wallet.js\")\n\t]\n};\n\n\n\n//# sourceURL=webpack://wallet.js/./src/js/app.js?");
+eval("\n\nvar Wallet = __webpack_require__(/*! ./wallet */ \"./src/js/wallet.js\");\n\nmodule.exports = Wallet;\n\n//# sourceURL=webpack://Wallet/./src/js/app.js?");
 
 /***/ }),
 
@@ -26,7 +27,7 @@ eval("\n\nmodule.exports = {\n\tplugins: [\n\t\t__webpack_require__(/*! ./wallet
   \********************************/
 /***/ ((module) => {
 
-eval("module.exports = class ApplePay {\n    constructor(config) {\n        this.config = config;\n    }\n\n    test() {\n        console.log('ApplePay');\n        console.log(this.config);\n    }\n}\n\n//# sourceURL=webpack://wallet.js/./src/js/psp/applepay.js?");
+eval("function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nfunction _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\"value\" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }\n\nfunction _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }\n\nmodule.exports = /*#__PURE__*/function () {\n  function ApplePay(config) {\n    _classCallCheck(this, ApplePay);\n\n    this.config = config;\n  }\n\n  _createClass(ApplePay, [{\n    key: \"test\",\n    value: function test() {\n      console.log('ApplePay');\n      console.log(this.config);\n    }\n  }]);\n\n  return ApplePay;\n}();\n\n//# sourceURL=webpack://Wallet/./src/js/psp/applepay.js?");
 
 /***/ }),
 
@@ -36,7 +37,7 @@ eval("module.exports = class ApplePay {\n    constructor(config) {\n        this
   \*********************************/
 /***/ ((module) => {
 
-eval("module.exports = class GooglePay {\n    constructor(config) {\n        this.config = config;\n    }\n\n    test() {\n        console.log('GooglePay');\n        console.log(this.config);\n    }\n}\n\n\n\n//# sourceURL=webpack://wallet.js/./src/js/psp/googlepay.js?");
+eval("function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nfunction _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\"value\" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }\n\nfunction _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }\n\nmodule.exports = /*#__PURE__*/function () {\n  function GooglePay(config) {\n    _classCallCheck(this, GooglePay);\n\n    this.config = config;\n  }\n\n  _createClass(GooglePay, [{\n    key: \"test\",\n    value: function test() {\n      console.log('GooglePay');\n      console.log(this.config);\n    }\n  }]);\n\n  return GooglePay;\n}();\n\n//# sourceURL=webpack://Wallet/./src/js/psp/googlepay.js?");
 
 /***/ }),
 
@@ -44,10 +45,10 @@ eval("module.exports = class GooglePay {\n    constructor(config) {\n        thi
 /*!**************************!*\
   !*** ./src/js/wallet.js ***!
   \**************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"Wallet\": () => (/* binding */ Wallet)\n/* harmony export */ });\n\n\nconst GooglePay = __webpack_require__(/*! ./psp/googlepay */ \"./src/js/psp/googlepay.js\");\nconst ApplePay = __webpack_require__(/*! ./psp/applepay */ \"./src/js/psp/applepay.js\");\n\nclass Wallet {\n\tconstructor(config) {\n\t\tconsole.log('wallet loaded');\n\t}\n}\n\n\n//# sourceURL=webpack://wallet.js/./src/js/wallet.js?");
+eval("\n\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nfunction _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\"value\" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }\n\nfunction _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }\n\nvar GooglePay = __webpack_require__(/*! ./psp/googlepay */ \"./src/js/psp/googlepay.js\");\n\nvar ApplePay = __webpack_require__(/*! ./psp/applepay */ \"./src/js/psp/applepay.js\");\n\nmodule.exports = /*#__PURE__*/function () {\n  function Wallet(config) {\n    _classCallCheck(this, Wallet);\n\n    this.config = config;\n  }\n\n  _createClass(Wallet, [{\n    key: \"init\",\n    value: function init() {\n      console.log('wallet params');\n      console.log(this.config);\n    }\n  }, {\n    key: \"pay\",\n    value: function pay() {\n      var gp = new GooglePay(this.config);\n      gp.test();\n    }\n  }]);\n\n  return Wallet;\n}();\n\n//# sourceURL=webpack://Wallet/./src/js/wallet.js?");
 
 /***/ })
 
@@ -78,40 +79,12 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 	}
 /******/ 	
 /************************************************************************/
-/******/ 	/* webpack/runtime/define property getters */
-/******/ 	(() => {
-/******/ 		// define getter functions for harmony exports
-/******/ 		__webpack_require__.d = (exports, definition) => {
-/******/ 			for(var key in definition) {
-/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
-/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
-/******/ 				}
-/******/ 			}
-/******/ 		};
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
-/******/ 	(() => {
-/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/make namespace object */
-/******/ 	(() => {
-/******/ 		// define __esModule on exports
-/******/ 		__webpack_require__.r = (exports) => {
-/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
-/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
-/******/ 			}
-/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
-/******/ 		};
-/******/ 	})();
-/******/ 	
-/************************************************************************/
 /******/ 	
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module is referenced by other modules so it can't be inlined
 /******/ 	var __webpack_exports__ = __webpack_require__("./src/js/app.js");
+/******/ 	Wallet = __webpack_exports__;
 /******/ 	
 /******/ })()
 ;

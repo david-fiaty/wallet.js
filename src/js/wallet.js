@@ -3,8 +3,13 @@
 const GooglePay = require('./psp/googlepay');
 const ApplePay = require('./psp/applepay');
 
-export class Wallet {
-	constructor(config) {
-		console.log('wallet loaded');
+module.exports = class Wallet {
+    constructor(config) {
+		this.config = config;
+	}
+
+	pay() {
+		let gp = new  GooglePay(this.config);
+		gp.test();
 	}
 }

@@ -1,8 +1,5 @@
 'use strict';
 
-module.exports = {
-	plugins: [
-		require('./wallet')
-	]
-};
+var Wallet = require('./wallet');
 
+module.exports = Wallet;

@@ -7,5 +7,16 @@ module.exports = {
   output: {
     filename: 'wallet.js',
     path: path.resolve(__dirname, 'dist'),
+    libraryTarget: 'var',
+    library: 'Wallet',
+  },
+  module: {
+    rules: [
+      {
+        test: /\.(js)$/,
+        exclude: /node_modules/,
+        use: 'babel-loader',
+      },
+    ],
   },
 };

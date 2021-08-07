@@ -1,12 +1,22 @@
  <script src="wallet.js"></script>
 
 <script>
-let wallet = new Wallet({
-    p1: 'p1',
-    p2: 'p2',
-    p3: 'p3'
+var wallet = new Wallet({
+    type: 'googlepay',
+    config: {
+
+    }
 });
 
-console.log(Wallet);
+wallet.pay();
 
+// google pay options
+/*
+button_selector
+allowed_card_networks VISA,MASTERCARD
+button_style white,black
+allowed_payment_methods CARD,TOKENIZED_CARD
+
+
+*/
 </script>
