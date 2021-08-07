@@ -2,11 +2,16 @@
 
 require('../../css/google-pay.css');
 const script = require('scriptjs');
+const helper = require('core/helper');
 
 module.exports = class GooglePay {
     constructor(params) {
-        this.params = params;
+        var defaults = {
+            d1: 'def1',
+            d2: 'def2',
+        };
 
+        this.params = helper.extendDefaults(defaults, params);
         this.init();
     }
 
@@ -21,9 +26,6 @@ module.exports = class GooglePay {
 
         // Button display
         button.classList.add(buttonClass);
-
-        // Prepare payment
-        //this.preparePayment();
 
         // Button event
         button.addEventListener('click', function () {    
