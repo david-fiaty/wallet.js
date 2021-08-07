@@ -10,6 +10,9 @@ module.exports = class GooglePay {
         this.createButton();
         this.createEvent();
 
+        script(process.env.GOOGLE_PAY_SCRIPT);
+
+
     }
 
     createButton () {
@@ -19,18 +22,19 @@ module.exports = class GooglePay {
     }
 
     createEvent () {
-        var self = this;
-        document.getElementById('wallet').addEventListener('click', function () {    
-            self.loadGooglePay();
-        });
+        document.getElementById('wallet').addEventListener(
+            'click',
+            this.loadGooglePay().bind(this)
+        );
     }
 
     loadGooglePay()
     {
+        console.log(this.config);
         var self = this;
-        var paymentsClient = this.getGooglePaymentsClient();
+        this.client = this.getGooglePaymentsClient();
 
-        paymentsClient.isReadyToPay({ 
+        this.client.isReadyToPay({ 
             allowedPaymentMethods: this.config.allowedPaymentMethods
         })
         .then(
@@ -45,6 +49,7 @@ module.exports = class GooglePay {
                 console.log(err);
             }
         );
+
     }
 
     prefetchGooglePaymentData()
@@ -85,17 +90,6 @@ module.exports = class GooglePay {
                 environment: this.config.environment
             }
         ));
-    }
-
-    init() {
-        var self = this;
-
-
-        // Initialize Google Pay
-        script(process.env.GOOGLE_PAY_SCRIPT, function() {
-            console.log('GooglePay');
-            console.log(self.params);
-        });
     }
 }
 
