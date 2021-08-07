@@ -22,16 +22,35 @@ module.exports = class GooglePay {
         // Button display
         button.classList.add(buttonClass);
 
+        // Prepare payment
+        //this.preparePayment();
+
         // Button event
         button.addEventListener('click', function () {    
-            self.loadGooglePay()
+            self.preparePayment();
+            self.requestPayment();
         });
     }
 
-    loadGooglePay()
+    requestPayment () {
+        var paymentData = this.getPaymentData();
+
+        this.client.loadPaymentData(paymentData).then(
+            function (paymentData) {
+                // handle the response
+                //processPayment(paymentData);
+            }
+        ).catch(
+            function (error) {
+                console.log(error);
+            }
+        );
+    }
+
+    preparePayment()
     {
         var self = this;
-        this.client = this.getGooglePaymentsClient();
+        this.client = this.getPaymentClient();
 
         self.client.isReadyToPay({ 
             allowedPaymentMethods: self.params.config.allowedPaymentMethods
@@ -39,7 +58,7 @@ module.exports = class GooglePay {
         .then(
             function (response) {
                 if (response.result) {
-                    self.prefetchGooglePaymentData();
+                    self.prefetchPaymentData();
                 }
             }
         )
@@ -48,23 +67,22 @@ module.exports = class GooglePay {
                 console.log(err);
             }
         );
-
     }
 
-    prefetchGooglePaymentData()
+    prefetchPaymentData()
     {
-        var paymentDataRequest = this.getGooglePaymentDataConfiguration();
+        this.paymentData = this.getPaymentData();
 
         // TransactionInfo must be set but does not affect cache
-        paymentDataRequest.transactionInfo = {
+        this.paymentData.transactionInfo = {
             totalPriceStatus: 'NOT_CURRENTLY_KNOWN',
             currencyCode: this.params.payment.currencyCode,
         };
 
-        this.client.prefetchPaymentData(paymentDataRequest);
+        this.client.prefetchPaymentData(this.paymentData);
     }
 
-    getGooglePaymentDataConfiguration ()
+    getPaymentData ()
     {
         return {
             merchantId: this.params.config.merchantId,
@@ -78,11 +96,12 @@ module.exports = class GooglePay {
             allowedPaymentMethods: this.params.config.allowedPaymentMethods,
             cardRequirements: {
                 allowedCardNetworks: this.params.config.allowedCardNetworks
-            }
+            },
+            transactionInfo: this.params.payment
         };
     }
 
-    getGooglePaymentsClient()
+    getPaymentClient()
     {
         return (new google.payments.api.PaymentsClient(
             {
