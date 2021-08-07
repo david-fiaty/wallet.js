@@ -19,4 +19,8 @@ module.exports = {
       },
     ],
   },
+  externalsType: 'script',
+  externals: {
+    packageName: 'global@https://pay.google.com/gp/p/js/pay.js',
+  },
 };
