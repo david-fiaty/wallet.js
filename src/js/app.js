@@ -1,5 +1,5 @@
 'use strict';
 
-var Wallet = require('./wallet');
+var Wallet = require('core/wallet');
 
 module.exports = Wallet;

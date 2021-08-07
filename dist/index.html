@@ -1,7 +1,7 @@
  <script src="wallet.js"></script>
 
 
- <button id="wallet" type="button"></button>
+ <button id="wallet" type="button" class="google-pay"></button>
 
 
 <script>
@@ -9,11 +9,11 @@ var wallet = new Wallet({
     targetId: '#wallet',
     type: 'googlepay',
     config: {
-
+        buttonStyle: 'white'
     }
 });
 
-wallet.pay();
+//wallet.pay();
 
 // google pay options
 /*

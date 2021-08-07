@@ -27,6 +27,7 @@ module.exports = {
   resolve: {
     alias: {
         'psp': path.join(__dirname, 'src/js/psp'),
+        'core': path.join(__dirname, 'src/js/core'),
     }
   },
   plugins: [

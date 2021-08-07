@@ -4,21 +4,26 @@ require('../../css/googlepay.css');
 var script = require('scriptjs');
 
 module.exports = class GooglePay {
-    constructor(config) {
-        this.config = config;
+    constructor(params) {
+        this.params = params;
+
+        this.createButton();
     }
 
-    test() {
+    createButton () {
+        document.getElementById('wallet').classList.add(
+            'google-pay-button-' + this.params.config.buttonStyle
+        );
+    }
+
+    init() {
         var self = this;
 
-        //var textnode = document.createTextNode("Water")
-        //document.getElementById('wallet').appendChild(textnode);
-        document.getElementById('wallet').classList.add('google-pay-button-white');
 
         // Initialize Google Pay
         script(process.env.GOOGLE_PAY_SCRIPT, function() {
             console.log('GooglePay');
-            console.log(self.config);
+            console.log(self.params);
         });
     }
 }
