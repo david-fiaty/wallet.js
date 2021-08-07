@@ -19,8 +19,9 @@ module.exports = {
       },
     ],
   },
-  externalsType: 'script',
-  externals: {
-    packageName: 'global@https://pay.google.com/gp/p/js/pay.js',
+  resolve: {
+    alias: {
+        'psp': path.join(__dirname, 'src/js/psp'),
+    }
   },
 };

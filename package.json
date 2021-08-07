@@ -24,7 +24,9 @@
     "url": "https://github.com/david-fiaty/wallet.js/issues"
   },
   "homepage": "https://github.com/david-fiaty/wallet.js#readme",
-  "dependencies": {},
+  "dependencies": {
+    "scriptjs": "^2.5.9"
+  },
   "devDependencies": {
     "@babel/core": "^7.15.0",
     "@babel/preset-env": "^7.15.0",

@@ -1,7 +1,7 @@
 'use strict';
 
-const GooglePay = require('./psp/googlepay');
-const ApplePay = require('./psp/applepay');
+const GooglePay = require('psp/googlepay');
+const ApplePay = require('psp/applepay');
 
 module.exports = class Wallet {
     constructor(config) {
