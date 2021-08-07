@@ -1,4 +1,5 @@
 const path = require('path');
+const dotenv = require('dotenv-webpack');
 
 module.exports = {
   entry: './src/js/app.js',
@@ -24,4 +25,7 @@ module.exports = {
         'psp': path.join(__dirname, 'src/js/psp'),
     }
   },
+  plugins: [
+    new dotenv()
+  ]
 };

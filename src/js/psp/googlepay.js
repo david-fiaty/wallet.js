@@ -8,11 +8,11 @@ module.exports = class GooglePay {
     }
 
     test() {
-        script("//pay.google.com/gp/p/js/pay.js", function() {
+        var self = this;
+        script(process.env.GOOGLE_PAY_SCRIPT, function() {
             // Initialize Google Pay
-            console.log(process.env.GOOGLE_PAY_SCRIPT);
             console.log('GooglePay');
-            console.log(this.config);
+            console.log(self.config);
         });
     }
 }
