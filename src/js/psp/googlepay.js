@@ -1,18 +1,16 @@
 'use strict';
 
 require('../../css/googlepay.css');
-var script = require('scriptjs');
+const script = require('scriptjs');
 
 module.exports = class GooglePay {
     constructor(params) {
         this.params = params;
 
-        this.createButton();
-        this.createEvent();
-
         script(process.env.GOOGLE_PAY_SCRIPT);
 
-
+        this.createButton();
+        this.createEvent();
     }
 
     createButton () {
@@ -22,20 +20,19 @@ module.exports = class GooglePay {
     }
 
     createEvent () {
-        document.getElementById('wallet').addEventListener(
-            'click',
-            this.loadGooglePay().bind(this)
-        );
+        var self = this;
+        document.getElementById('wallet').addEventListener('click', function () {    
+            self.loadGooglePay()
+        });
     }
 
     loadGooglePay()
     {
-        console.log(this.config);
         var self = this;
         this.client = this.getGooglePaymentsClient();
 
-        this.client.isReadyToPay({ 
-            allowedPaymentMethods: this.config.allowedPaymentMethods
+        self.client.isReadyToPay({ 
+            allowedPaymentMethods: self.params.config.allowedPaymentMethods
         })
         .then(
             function (response) {
@@ -59,7 +56,7 @@ module.exports = class GooglePay {
         // TransactionInfo must be set but does not affect cache
         paymentDataRequest.transactionInfo = {
             totalPriceStatus: 'NOT_CURRENTLY_KNOWN',
-            currencyCode: this.config.paymentDataRequest.currencyCode,
+            currencyCode: this.params.payment.currencyCode,
         };
 
         this.client.prefetchPaymentData(paymentDataRequest);
@@ -68,17 +65,17 @@ module.exports = class GooglePay {
     getGooglePaymentDataConfiguration ()
     {
         return {
-            merchantId: this.config.merchantId,
+            merchantId: this.params.config.merchantId,
             paymentMethodTokenizationParameters: {
-                tokenizationType: this.config.tokenizationType,
+                tokenizationType: this.params.config.tokenizationType,
                 parameters: {
-                    'gateway': this.config.gatewayName,
-                    'gatewayMerchantId': this.config.merchantId,
+                    'gateway': this.params.config.gatewayName,
+                    'gatewayMerchantId': this.params.config.merchantId,
                 }
             },
-            allowedPaymentMethods: this.config.allowedPaymentMethods,
+            allowedPaymentMethods: this.params.config.allowedPaymentMethods,
             cardRequirements: {
-                allowedCardNetworks: this.config.allowedCardNetworks
+                allowedCardNetworks: this.params.config.allowedCardNetworks
             }
         };
     }
@@ -87,7 +84,7 @@ module.exports = class GooglePay {
     {
         return (new google.payments.api.PaymentsClient(
             {
-                environment: this.config.environment
+                environment: this.params.config.environment
             }
         ));
     }
