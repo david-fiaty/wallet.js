@@ -82,8 +82,6 @@ module.exports = class GooglePay {
 
         // Send the request
         console.log(payload);
-
-        
     }
     
 
