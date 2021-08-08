@@ -18,7 +18,7 @@ module.exports = {
 
 	checkOptions: function(params) {
 		if (params.config.merchantId.length == 0) {
-			throw 'Wallet.js Error - The merchantId parameter is required.';
+			throw 'Wallet.js Error - The required parameter "merchantId" is missing on initialization.';
 		}
 	},
 }

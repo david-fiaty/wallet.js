@@ -28,7 +28,7 @@ eval("\n\nvar Wallet = __webpack_require__(/*! core/wallet */ \"./src/js/core/wa
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
-eval("\n\nvar merge = __webpack_require__(/*! deepmerge */ \"./node_modules/deepmerge/dist/cjs.js\");\n\nmodule.exports = {\n  extendDefaults: function extendDefaults(defaults, params) {\n    try {\n      if (this.checkOptions(params)) {\n        return merge(defaults, params);\n      }\n    } catch (message) {\n      console.log('%c ' + message, 'color: red');\n    }\n\n    return defaults;\n  },\n  checkOptions: function checkOptions(params) {\n    if (params.config.merchantId.length == 0) {\n      throw 'Wallet.js Error - The merchantId parameter is required.';\n    }\n  }\n};\n\n//# sourceURL=webpack://Wallet/./src/js/core/helper.js?");
+eval("\n\nvar merge = __webpack_require__(/*! deepmerge */ \"./node_modules/deepmerge/dist/cjs.js\");\n\nmodule.exports = {\n  extendDefaults: function extendDefaults(defaults, params) {\n    try {\n      if (this.checkOptions(params)) {\n        return merge(defaults, params);\n      }\n    } catch (message) {\n      console.log('%c ' + message, 'color: red');\n    }\n\n    return defaults;\n  },\n  checkOptions: function checkOptions(params) {\n    if (params.config.merchantId.length == 0) {\n      throw 'Wallet.js Error - The required parameter \"merchantId\" is missing on initialization.';\n    }\n  }\n};\n\n//# sourceURL=webpack://Wallet/./src/js/core/helper.js?");
 
 /***/ }),
 
