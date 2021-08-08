@@ -5,8 +5,11 @@ require('../../css/google-pay.css');
 const script = require('scriptjs');
 const helper = require('core/helper');
 
-module.exports = class GooglePay {
-    constructor(targetId, params) {
+const Payment = require('core/payment');
+
+module.exports = class GooglePay extends Payment {
+    constructor(targetId, params) { 
+        super();      
         var defaults = {
             config: {
                 environment: 'TEST',
@@ -45,7 +48,6 @@ module.exports = class GooglePay {
             self.requestPayment();
         });
     }
-
 
     preparePayment()
     {
@@ -109,7 +111,7 @@ module.exports = class GooglePay {
         // TransactionInfo must be set but does not affect cache
         this.paymentData.transactionInfo = {
             totalPriceStatus: 'NOT_CURRENTLY_KNOWN',
-            currencyCode: this.params.payment.currencyCode,
+            currencyCode: this.currencyCode,
         };
 
         this.client.prefetchPaymentData(this.paymentData);
