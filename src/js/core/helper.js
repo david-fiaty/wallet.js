@@ -9,8 +9,8 @@ module.exports = {
 				return merge(defaults, params);
 			}
 		}	
-		catch(e) {
-			console.log(e);
+		catch(message) {
+			console.log('%c ' + message, 'color: red');
 		}
 
 		return defaults;
@@ -18,7 +18,7 @@ module.exports = {
 
 	checkOptions: function(params) {
 		if (params.config.merchantId.length == 0) {
-			throw 'The merchantId parameter is required';
+			throw 'Wallet.js Error - The merchantId parameter is required.';
 		}
 	},
 }
