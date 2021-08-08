@@ -11,6 +11,7 @@ module.exports = class GooglePay extends Payment {
     constructor(targetId, params) { 
         super();      
         var defaults = {
+            debug: false,
             config: {
                 environment: 'TEST',
                 buttonStyle: 'white',
@@ -49,7 +50,7 @@ module.exports = class GooglePay extends Payment {
                 this.params.payment.currencyCode
             );
         }
-        
+
         // Button event
         button.addEventListener('click', function () {    
             self.preparePayment();
@@ -81,10 +82,22 @@ module.exports = class GooglePay extends Payment {
         );
     }
 
-    requestPayment(amount) {
+    requestPayment() {
         // Prepare variables
         var self = this;
         var paymentData = this.getPaymentData();
+
+        // Validate amount
+        try {
+            helper.checkAmount(this.amount);
+        }
+        catch(msg) {
+            helper.logError(msg);
+        }
+
+        // Update amount
+        paymentData.transactionInfo.totalPrice = this.amount;
+        paymentData.transactionInfo.currencyCode = this.currencyCode;
 
         // Load the payment data
         this.client.loadPaymentData(paymentData).then(

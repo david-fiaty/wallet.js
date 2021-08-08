@@ -7,13 +7,14 @@
 <script>
 var wallet = new Wallet('#wallet', {
     type: 'googlepay',
+    debug: true,
     config: {
         merchantId: 'pk_test_f4be3224-70a5-4441-be9b-abb59e3fcd31',
         gatewayName: 'checkoutltd',
     },
     payment: {
         currencyCode: 'USD',
-        totalPrice: 11.00,
+        amount: '11.00',
     }
 });
 

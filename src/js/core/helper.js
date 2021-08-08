@@ -7,8 +7,8 @@ module.exports = {
 		try {
 			this.checkOptions(params);
 		}	
-		catch(message) {
-			console.log('%c ' + message, 'color: red');
+		catch(msg) {
+			this.logError(msg);
 		}
 
 		return merge(defaults, params);
@@ -20,7 +20,17 @@ module.exports = {
 		}
 
 		if (!params.config.hasOwnProperty('gatewayName') || params.config.gatewayName.length == 0) {
-			throw 'Wallet.js Google Pay - The required parameter "gatewayName" is missing or empty.';
+			throw 'Wallet.js Google Pay - The required parameter "gatewayName" is missing or invalid.';
 		}
 	},
+
+	checkAmount: function(amount) {
+        if (isNaN(parseFloat(amount)) || parseFloat(amount) == 0 || amount.length == 0) {
+			throw 'Wallet.js Google Pay - The required parameter "amount" is missing or invalid.';
+        }
+	},
+
+	logError: function (msg) {
+		console.log('%c ' + msg, 'color: red');
+	}
 }
