@@ -5,7 +5,7 @@ const script = require('scriptjs');
 const helper = require('core/helper');
 
 module.exports = class GooglePay {
-    constructor(params) {
+    constructor(targetId, params) {
         var defaults = {
             config: {
                 environment: 'TEST',
@@ -19,17 +19,18 @@ module.exports = class GooglePay {
                 totalPriceStatus: 'FINAL',
                 totalPrice: 11.00,
                 tokenizationType: 'PAYMENT_GATEWAY',
-            }
+            },
         };
 
         this.params = helper.extendDefaults(defaults, params);
-        this.init();
+
+        this.init(targetId);
     }
 
-    init () {
+    init (targetId) {
         // Prepare variables
         var self = this;
-        var button = document.getElementById(this.params.targetId);
+        var button = document.getElementById(targetId);
         var buttonClass = 'google-pay-button-' + this.params.config.buttonStyle;
 
         // Load the remote script
