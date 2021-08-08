@@ -42,6 +42,14 @@ module.exports = class GooglePay extends Payment {
         // Button display
         button.classList.add(buttonClass);
 
+        // Payment amount
+        if (true) { // If amount and currency provided on init
+            this.setAmount(
+                this.params.payment.amount,
+                this.params.payment.currencyCode
+            );
+        }
+        
         // Button event
         button.addEventListener('click', function () {    
             self.preparePayment();
@@ -51,11 +59,8 @@ module.exports = class GooglePay extends Payment {
 
     preparePayment()
     {
+        // Variables
         var self = this;
-
-        // Payment data
-        this.setCurrencyCode(this.params.payment.currencyCode);
-        this.setAmount(this.params.payment.amount);
 
         // Payment client
         this.client = this.getPaymentClient();
@@ -117,7 +122,7 @@ module.exports = class GooglePay extends Payment {
         // TransactionInfo must be set but does not affect cache
         this.paymentData.transactionInfo = {
             totalPriceStatus: 'NOT_CURRENTLY_KNOWN',
-            currencyCode: this.getCurrencyCode(),
+            currencyCode: this.currencyCode,
         };
 
         this.client.prefetchPaymentData(this.paymentData);

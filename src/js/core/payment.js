@@ -1,18 +1,7 @@
 module.exports = class Payment {
 	
-	getCurrencyCode() {
-		return this.currencyCode;
-	}
-
-	getAmount(amount) {
-		return this.amount;
-	}
-
-	setCurrencyCode(currencyCode) {
+	setAmount(value, currencyCode) {
+		this.amount = value;
 		this.currencyCode = currencyCode;
-	}
-
-	setAmount(amount) {
-		this.amount = amount;
 	}
 }
