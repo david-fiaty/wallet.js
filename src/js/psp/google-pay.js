@@ -18,7 +18,6 @@ module.exports = class GooglePay {
             payment: {
                 currencyCode: 'USD',
                 totalPriceStatus: 'FINAL',
-                totalPrice: 11.00,
                 tokenizationType: 'PAYMENT_GATEWAY',
             },
         };
