@@ -91,8 +91,8 @@ module.exports = class GooglePay extends Payment {
         try {
             helper.checkAmount(this.amount, this.currencyCode);
         }
-        catch(msg) {
-            helper.logError(msg);
+        catch(e) {
+            helper.logError(e);
         }
 
         // Update amount
