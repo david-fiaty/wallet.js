@@ -89,7 +89,7 @@ module.exports = class GooglePay extends Payment {
 
         // Validate amount
         try {
-            helper.checkAmount(this.amount);
+            helper.checkAmount(this.amount, this.currencyCode);
         }
         catch(msg) {
             helper.logError(msg);

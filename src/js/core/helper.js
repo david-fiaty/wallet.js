@@ -24,9 +24,13 @@ module.exports = {
 		}
 	},
 
-	checkAmount: function(amount) {
+	checkAmount: function(amount, currencyCode) {
         if (isNaN(parseFloat(amount)) || parseFloat(amount) == 0 || amount.length == 0) {
 			throw 'Wallet.js Google Pay - The required parameter "amount" is missing or invalid.';
+        }
+
+        if (currencyCode.length == 0) {
+			throw 'Wallet.js Google Pay - The required parameter "currencyCode" is missing or invalid.';
         }
 	},
 
