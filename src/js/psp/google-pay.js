@@ -17,8 +17,8 @@ module.exports = class GooglePay {
             },
             payment: {
                 currencyCode: 'USD',
-                totalPriceStatus: 'FINAL',
                 tokenizationType: 'PAYMENT_GATEWAY',
+                totalPriceStatus: 'FINAL',
             },
         };
 
@@ -68,10 +68,19 @@ module.exports = class GooglePay {
         );
     }
 
-    requestPayment () {
-        var paymentData = this.getPaymentData();
+    requestPayment(amount) {
+        // Prepare variables
         var self = this;
+        var paymentData = this.getPaymentData();
 
+        // Set the amount
+        paymentData.transactionInfo = {
+            currencyCode: this.params.payment.currencyCode,
+            totalPriceStatus: this.params.payment.totalPriceStatus,
+            totalPrice: this.params.payment.totalPrice,
+        };
+
+        // Load the payment data
         this.client.loadPaymentData(paymentData).then(
             function (paymentData) {
                 self.sendRequest(paymentData);
@@ -128,7 +137,6 @@ module.exports = class GooglePay {
             cardRequirements: {
                 allowedCardNetworks: this.params.config.allowedCardNetworks
             },
-            transactionInfo: this.params.payment
         };
     }
 
