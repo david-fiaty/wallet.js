@@ -52,12 +52,6 @@ module.exports = class GooglePay {
     {
         var self = this;
         this.client = this.getPaymentClient();
-
-
-        console.log('------');
-
-        console.log(this.params);
-
         this.client.isReadyToPay({ 
             allowedPaymentMethods: this.params.config.allowedPaymentMethods
         })
