@@ -30,7 +30,7 @@ module.exports = class GooglePay {
     init (targetId) {
         // Prepare variables
         var self = this;
-        var button = document.getElementById(targetId);
+        var button = document.querySelector(targetId);
         var buttonClass = 'google-pay-button-' + this.params.config.buttonStyle;
 
         // Load the remote script
