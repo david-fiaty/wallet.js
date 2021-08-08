@@ -5,15 +5,13 @@ const merge = require('deepmerge');
 module.exports = {
 	extendDefaults: function(defaults, params) {
 		try {
-			if (this.checkOptions(params)) { 
-				return merge(defaults, params);
-			}
+			this.checkOptions(params);
 		}	
 		catch(message) {
 			console.log('%c ' + message, 'color: red');
 		}
 
-		return defaults;
+		return merge(defaults, params);
 	},
 
 	checkOptions: function(params) {
