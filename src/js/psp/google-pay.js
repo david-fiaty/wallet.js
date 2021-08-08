@@ -1,6 +1,7 @@
 'use strict';
 
 require('../../css/google-pay.css');
+
 const script = require('scriptjs');
 const helper = require('core/helper');
 
@@ -10,7 +11,7 @@ module.exports = class GooglePay {
             config: {
                 environment: 'TEST',
                 buttonStyle: 'white',
-                allowedPaymentMethods: ['AMEX', 'DISCOVER', 'INTERAC', 'JCB', 'MASTERCARD', 'VISA'],
+                allowedPaymentMethods: ['CARD', 'TOKENIZED_CARD'],
                 allowedCardNetworks: ['AMEX', 'DISCOVER', 'INTERAC', 'JCB', 'MASTERCARD', 'VISA'],
                 allowedCardAuthMethods: ['PAN_ONLY', 'CRYPTOGRAM_3DS'],
             },
