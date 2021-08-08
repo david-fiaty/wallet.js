@@ -1,20 +1,26 @@
 'use strict';
 
+const merge = require('deepmerge');
+
 module.exports = {
 	extendDefaults: function(defaults, params) {
-		for (let p in defaults) {
-		  if (params.hasOwnProperty(p)) {
-			if (typeof defaults[p] === 'object') {
-				defaults[p] = Object.assign({}, defaults[p], params[p]);
-			}
-			else {
-				defaults[p] = params[p];
-			}
-		  }
+		try {
+			this.checkOptions(params);
+		}	
+		catch(message) {
+			console.log('%c ' + message, 'color: red');
 		}
 
-		console.log(defaults);
+		return merge(defaults, params);
+	},
 
-		return defaults;
+	checkOptions: function(params) {
+		if (!params.config.hasOwnProperty('merchantId') || params.config.merchantId.length == 0) {
+			throw 'Wallet.js Google Pay - The required parameter "merchantId" is missing or empty.';
+		}
+
+		if (!params.config.hasOwnProperty('gatewayName') || params.config.gatewayName.length == 0) {
+			throw 'Wallet.js Google Pay - The required parameter "gatewayName" is missing or empty.';
+		}
 	},
 }

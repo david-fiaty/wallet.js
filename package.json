@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/david-fiaty/wallet.js#readme",
   "dependencies": {
+    "deepmerge": "^4.2.2",
     "dotenv": "^10.0.0",
     "scriptjs": "^2.5.9"
   },

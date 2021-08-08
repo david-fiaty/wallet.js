@@ -1,6 +1,7 @@
 'use strict';
 
 require('../../css/google-pay.css');
+
 const script = require('scriptjs');
 const helper = require('core/helper');
 
@@ -10,15 +11,14 @@ module.exports = class GooglePay {
             config: {
                 environment: 'TEST',
                 buttonStyle: 'white',
-                allowedPaymentMethods: ['AMEX', 'DISCOVER', 'INTERAC', 'JCB', 'MASTERCARD', 'VISA'],
+                allowedPaymentMethods: ['CARD', 'TOKENIZED_CARD'],
                 allowedCardNetworks: ['AMEX', 'DISCOVER', 'INTERAC', 'JCB', 'MASTERCARD', 'VISA'],
                 allowedCardAuthMethods: ['PAN_ONLY', 'CRYPTOGRAM_3DS'],
             },
             payment: {
                 currencyCode: 'USD',
-                totalPriceStatus: 'FINAL',
-                totalPrice: 11.00,
                 tokenizationType: 'PAYMENT_GATEWAY',
+                totalPriceStatus: 'FINAL',
             },
         };
 
@@ -51,12 +51,6 @@ module.exports = class GooglePay {
     {
         var self = this;
         this.client = this.getPaymentClient();
-
-
-        console.log('------');
-
-        console.log(this.params);
-
         this.client.isReadyToPay({ 
             allowedPaymentMethods: this.params.config.allowedPaymentMethods
         })
@@ -74,10 +68,19 @@ module.exports = class GooglePay {
         );
     }
 
-    requestPayment () {
-        var paymentData = this.getPaymentData();
+    requestPayment(amount) {
+        // Prepare variables
         var self = this;
+        var paymentData = this.getPaymentData();
 
+        // Set the amount
+        paymentData.transactionInfo = {
+            currencyCode: this.params.payment.currencyCode,
+            totalPriceStatus: this.params.payment.totalPriceStatus,
+            totalPrice: this.params.payment.totalPrice,
+        };
+
+        // Load the payment data
         this.client.loadPaymentData(paymentData).then(
             function (paymentData) {
                 self.sendRequest(paymentData);
@@ -134,7 +137,6 @@ module.exports = class GooglePay {
             cardRequirements: {
                 allowedCardNetworks: this.params.config.allowedCardNetworks
             },
-            transactionInfo: this.params.payment
         };
     }
 
