@@ -52,6 +52,12 @@ module.exports = class GooglePay extends Payment {
     preparePayment()
     {
         var self = this;
+
+        // Payment data
+        this.setCurrencyCode(this.params.payment.currencyCode);
+        this.setAmount(this.params.payment.amount);
+
+        // Payment client
         this.client = this.getPaymentClient();
         this.client.isReadyToPay({ 
             allowedPaymentMethods: this.params.config.allowedPaymentMethods
@@ -111,7 +117,7 @@ module.exports = class GooglePay extends Payment {
         // TransactionInfo must be set but does not affect cache
         this.paymentData.transactionInfo = {
             totalPriceStatus: 'NOT_CURRENTLY_KNOWN',
-            currencyCode: this.currencyCode,
+            currencyCode: this.getCurrencyCode(),
         };
 
         this.client.prefetchPaymentData(this.paymentData);
