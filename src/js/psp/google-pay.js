@@ -1,19 +1,36 @@
 'use strict';
 
-require('../../css/googlepay.css');
+require('../../css/google-pay.css');
 const script = require('scriptjs');
+const helper = require('core/helper');
 
 module.exports = class GooglePay {
-    constructor(params) {
-        this.params = params;
+    constructor(targetId, params) {
+        var defaults = {
+            config: {
+                environment: 'TEST',
+                buttonStyle: 'white',
+                allowedPaymentMethods: ['AMEX', 'DISCOVER', 'INTERAC', 'JCB', 'MASTERCARD', 'VISA'],
+                allowedCardNetworks: ['AMEX', 'DISCOVER', 'INTERAC', 'JCB', 'MASTERCARD', 'VISA'],
+                allowedCardAuthMethods: ['PAN_ONLY', 'CRYPTOGRAM_3DS'],
+            },
+            payment: {
+                currencyCode: 'USD',
+                totalPriceStatus: 'FINAL',
+                totalPrice: 11.00,
+                tokenizationType: 'PAYMENT_GATEWAY',
+            },
+        };
 
-        this.init();
+        this.params = helper.extendDefaults(defaults, params);
+
+        this.init(targetId);
     }
 
-    init () {
+    init (targetId) {
         // Prepare variables
         var self = this;
-        var button = document.getElementById(this.params.targetId);
+        var button = document.querySelector(targetId);
         var buttonClass = 'google-pay-button-' + this.params.config.buttonStyle;
 
         // Load the remote script
@@ -21,9 +38,6 @@ module.exports = class GooglePay {
 
         // Button display
         button.classList.add(buttonClass);
-
-        // Prepare payment
-        //this.preparePayment();
 
         // Button event
         button.addEventListener('click', function () {    
@@ -38,8 +52,13 @@ module.exports = class GooglePay {
         var self = this;
         this.client = this.getPaymentClient();
 
-        self.client.isReadyToPay({ 
-            allowedPaymentMethods: self.params.config.allowedPaymentMethods
+
+        console.log('------');
+
+        console.log(this.params);
+
+        this.client.isReadyToPay({ 
+            allowedPaymentMethods: this.params.config.allowedPaymentMethods
         })
         .then(
             function (response) {
@@ -72,6 +91,7 @@ module.exports = class GooglePay {
 
     sendRequest(paymentData) {
         // Prepare the payload
+        /*
         var payload = {
             cardToken: {
                 signature: JSON.parse(paymentData.paymentMethodToken.token).signature,
@@ -79,9 +99,10 @@ module.exports = class GooglePay {
                 signedMessage: JSON.parse(paymentData.paymentMethodToken.token).signedMessage,
             },
         };
+        */
 
         // Send the request
-        console.log(payload);
+        console.log(paymentData);
     }
     
 
@@ -103,7 +124,7 @@ module.exports = class GooglePay {
         return {
             merchantId: this.params.config.merchantId,
             paymentMethodTokenizationParameters: {
-                tokenizationType: this.params.config.tokenizationType,
+                tokenizationType: this.params.payment.tokenizationType,
                 parameters: {
                     'gateway': this.params.config.gatewayName,
                     'gatewayMerchantId': this.params.config.merchantId,

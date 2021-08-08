@@ -5,21 +5,15 @@
 
 
 <script>
-var wallet = new Wallet({
-    targetId: 'wallet',
+var wallet = new Wallet('#wallet', {
     type: 'googlepay',
     config: {
-        environment: 'TEST',
-        merchantId: 'merchantId',
-        gatewayName: 'gatewayName',
-        buttonStyle: 'white',
-        allowedPaymentMethods: ['CARD', 'TOKENIZED_CARD'],
-        allowedCardNetworks: ['VISA', 'MASTERCARD'],
+        merchantId: 'pk_test_f4be3224-70a5-4441-be9b-abb59e3fcd31',
+        gatewayName: 'checkoutltd',
     },
     payment: {
         currencyCode: 'USD',
-        totalPriceStatus: 'FINAL',
-        totalPrice: 11.00
+        totalPrice: 11.00,
     }
 });
 
