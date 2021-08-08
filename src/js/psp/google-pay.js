@@ -73,13 +73,6 @@ module.exports = class GooglePay {
         var self = this;
         var paymentData = this.getPaymentData();
 
-        // Set the amount
-        paymentData.transactionInfo = {
-            currencyCode: this.params.payment.currencyCode,
-            totalPriceStatus: this.params.payment.totalPriceStatus,
-            totalPrice: this.params.payment.totalPrice,
-        };
-
         // Load the payment data
         this.client.loadPaymentData(paymentData).then(
             function (paymentData) {
@@ -137,6 +130,7 @@ module.exports = class GooglePay {
             cardRequirements: {
                 allowedCardNetworks: this.params.config.allowedCardNetworks
             },
+            transactionInfo: this.params.payment
         };
     }
 
