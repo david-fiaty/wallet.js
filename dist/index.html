@@ -1,12 +1,11 @@
  <script src="wallet.js"></script>
 
 
- <button id="wallet" type="button" class="google-pay"></button>
-
+ <button id="wallet" type="button"></button>
 
 <script>
 var wallet = new Wallet('#wallet', {
-    type: 'googlepay',
+    type: 'applepay',
     debug: true,
     config: {
         merchantId: 'pk_test_f4be3224-70a5-4441-be9b-abb59e3fcd31',

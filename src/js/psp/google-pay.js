@@ -42,13 +42,16 @@ module.exports = class GooglePay extends Payment {
         // Prepare variables
         let self = this;
         let button = document.querySelector(targetId);
-        let buttonClass = 'google-pay-button-' + this.params.config.buttonStyle;
+        let buttonClasses = [
+            'google-pay',
+            'google-pay-button-' + this.params.config.buttonStyle,
+        ];
 
         // Load the remote script
         script(process.env.GOOGLE_PAY_SCRIPT);
 
         // Button display
-        button.classList.add(buttonClass);
+        button.classList.add(...buttonClasses);
 
         // Payment amount
         if (true) { // If amount and currency provided on init

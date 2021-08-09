@@ -12,5 +12,8 @@ module.exports = class Wallet {
 		else if (params.type == 'googlepay') {
 			wallet = new GooglePay(targetId, params);
 		}
+		else {
+			throw new Error('Wallet.js - Unknown wallet type in parameters');
+		}
 	}
 }

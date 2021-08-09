@@ -31,6 +31,16 @@ module.exports = class ApplePay extends Payment {
     }
 
     init (targetId) {
+        // Prepare variables
+        let self = this;
+        let button = document.querySelector(targetId);
+        let buttonClasses = [
+            'apple-pay',
+            'apple-pay-button'
+        ];
+
+        // Button display
+        button.classList.add(...buttonClasses);
         console.log('applepay loaded');
     }
 }
