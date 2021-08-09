@@ -3,8 +3,9 @@
 require('../../css/google-pay.css');
 
 const script = require('scriptjs');
-const Payment = require('core/payment');
 const helper = require('core/helper');
+
+const Payment = require('core/payment');
 
 module.exports = class GooglePay extends Payment {
     constructor(targetId, params) { 
@@ -54,6 +55,12 @@ module.exports = class GooglePay extends Payment {
         // Button display
         button.classList.add(...buttonClasses);
 
+        // Button event
+        button.addEventListener('click', function () {    
+            self.preparePayment();
+            self.requestPayment();
+        });
+
         // Payment amount
         if (true) { // If amount and currency provided on init
             this.setAmount(
@@ -61,12 +68,6 @@ module.exports = class GooglePay extends Payment {
                 this.params.payment.currencyCode
             );
         }
-
-        // Button event
-        button.addEventListener('click', function () {    
-            self.preparePayment();
-            self.requestPayment();
-        });
     }
 
     preparePayment()
