@@ -33,6 +33,6 @@ module.exports = {
 	},
 
 	logError: function (e) {
-		console.log('%c ' + e.message, 'color: red');
+		console.log('%c ' + e, 'color: red');
 	}
 }

@@ -22,7 +22,6 @@ module.exports = class ApplePay extends Payment {
         // Required options
         let requiredOptions = [
             'merchantId',
-            'gatewayName',
         ];
 
         // Parent constructor
@@ -62,28 +61,34 @@ module.exports = class ApplePay extends Payment {
     preparePayment()
     {
         // Check session
-        if (window.ApplePaySession) {
-            helper.logError('Wallet.js - Apple Pay is not available for this browser.');
-            return;
-        }
-        
-        // Promise
-        let promise = ApplePaySession.canMakePaymentsWithActiveCard(
-            this.params.config.merchantId
-        );
+        try {
+            if (window.ApplePaySession) {
+                helper.logError('Wallet.js - Apple Pay is not available for this browser.');
+                return;
+            }
+            
+            // Promise
+            let promise = ApplePaySession.canMakePaymentsWithActiveCard(
+                this.params.config.merchantId
+            );
 
-        // Check payment status
-        promise.then(
-            function (canMakePayments) {
-                if (!canMakePayments) {
-                    helper.logError('Wallet.js - Apple Pay is not available for this browser.');
-                } 
-            }
-        ).catch(
-            function (error) {
-                helper.logError(error);
-            }
-        );
+            // Check payment status
+            promise.then(
+                function (canMakePayments) {
+                    if (!canMakePayments) {
+                        helper.logError('Wallet.js - Apple Pay is not available for this browser.');
+                    } 
+                }
+            ).catch(
+                function (error) {
+                    helper.logError(error);
+                }
+            );
+        }
+        catch (e) {
+            helper.logError('Wallet.js - Apple Pay initialization error');
+            helper.logError(e);
+        }
     }
 
     requestPayment() {
