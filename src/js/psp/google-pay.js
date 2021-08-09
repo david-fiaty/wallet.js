@@ -9,8 +9,11 @@ const Payment = require('core/payment');
 
 module.exports = class GooglePay extends Payment {
     constructor(targetId, params) { 
+        // Parent constructor
         super();      
-        var defaults = {
+
+        // Default options
+        let defaultOptions = {
             debug: false,
             config: {
                 environment: 'TEST',
@@ -26,7 +29,14 @@ module.exports = class GooglePay extends Payment {
             },
         };
 
-        this.params = helper.extendDefaults(defaults, params);
+        // Required options
+        let requiredOptions = [
+            'merchantId',
+            'gatewayName',
+        ]
+
+        // Extend defaults
+        this.params = helper.buildOptions(defaultOptions, requiredOptions, params);
 
         this.init(targetId);
     }
@@ -89,10 +99,10 @@ module.exports = class GooglePay extends Payment {
 
         // Validate amount
         try {
-            helper.checkAmount(this.amount);
+            helper.checkAmount(this.amount, this.currencyCode);
         }
-        catch(msg) {
-            helper.logError(msg);
+        catch(e) {
+            helper.logError(e);
         }
 
         // Update amount

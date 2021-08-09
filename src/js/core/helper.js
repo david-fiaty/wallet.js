@@ -3,9 +3,9 @@
 const merge = require('deepmerge');
 
 module.exports = {
-	extendDefaults: function(defaults, params) {
+	buildOptions: function(defaults, required, params) {
 		try {
-			this.checkOptions(params);
+			this.validateOptions(required, params);
 		}	
 		catch(msg) {
 			this.logError(msg);
@@ -14,23 +14,25 @@ module.exports = {
 		return merge(defaults, params);
 	},
 
-	checkOptions: function(params) {
-		if (!params.config.hasOwnProperty('merchantId') || params.config.merchantId.length == 0) {
-			throw 'Wallet.js Google Pay - The required parameter "merchantId" is missing or empty.';
-		}
-
-		if (!params.config.hasOwnProperty('gatewayName') || params.config.gatewayName.length == 0) {
-			throw 'Wallet.js Google Pay - The required parameter "gatewayName" is missing or invalid.';
-		}
+	validateOptions: function(required, params) {
+		required.forEach(function (item, i) {
+			if (!params.config.hasOwnProperty(item) || !params.config[item] || params.config[item].length == 0) {
+				throw new Error('Wallet.js Google Pay - The required parameter "' + item + '" is missing or empty.');
+			}	
+		}); 
 	},
 
-	checkAmount: function(amount) {
+	checkAmount: function(amount, currencyCode) {
         if (isNaN(parseFloat(amount)) || parseFloat(amount) == 0 || amount.length == 0) {
-			throw 'Wallet.js Google Pay - The required parameter "amount" is missing or invalid.';
+			throw new Error('Wallet.js Google Pay - The required parameter "amount" is missing or invalid.');
+        }
+
+        if (currencyCode.length == 0) {
+			throw new Error('Wallet.js Google Pay - The required parameter "currencyCode" is missing or invalid.');
         }
 	},
 
-	logError: function (msg) {
-		console.log('%c ' + msg, 'color: red');
+	logError: function (e) {
+		console.log('%c ' + e.message, 'color: red');
 	}
 }
