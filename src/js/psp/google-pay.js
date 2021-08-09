@@ -62,11 +62,8 @@ module.exports = class GooglePay extends Payment {
         });
 
         // Payment amount
-        if (true) { // If amount and currency provided on init
-            this.setAmount(
-                this.params.payment.amount,
-                this.params.payment.currencyCode
-            );
+        if (true) { 
+            this.setAmount(this.params.amount);
         }
     }
 
@@ -101,7 +98,7 @@ module.exports = class GooglePay extends Payment {
 
         // Validate amount
         try {
-            helper.checkAmount(this.amount, this.currencyCode);
+            helper.checkAmount(this.amount, this.params.config.currencyCode);
         }
         catch(e) {
             helper.logError(e);
@@ -109,7 +106,7 @@ module.exports = class GooglePay extends Payment {
 
         // Update amount
         paymentData.transactionInfo.totalPrice = this.amount;
-        paymentData.transactionInfo.currencyCode = this.currencyCode;
+        paymentData.transactionInfo.currencyCode = this.params.config.currencyCode;
 
         // Load the payment data
         this.client.loadPaymentData(paymentData).then(
@@ -147,7 +144,7 @@ module.exports = class GooglePay extends Payment {
         // TransactionInfo must be set but does not affect cache
         this.paymentData.transactionInfo = {
             totalPriceStatus: 'NOT_CURRENTLY_KNOWN',
-            currencyCode: this.currencyCode,
+            currencyCode: this.params.config.currencyCode,
         };
 
         this.client.prefetchPaymentData(this.paymentData);

@@ -5,15 +5,25 @@
 <script>
 var wallet = new Wallet('#wallet', {
     type: 'applepay',
-    debug: true,
+    amount: '11.00',
+    config: {
+        merchantId: 'pk_test_f4be3224-70a5-4441-be9b-abb59e3fcd31',
+        windowTitle: 'Apple Pay transaction window', 
+        currencyCode: 'USD',   
+    },
+});
+
+/*
+var wallet = new Wallet('#wallet', {
+    type: 'googlepay',
+    amount: '11.00',
     config: {
         merchantId: 'pk_test_f4be3224-70a5-4441-be9b-abb59e3fcd31',
         gatewayName: 'checkoutltd',
-    },
-    payment: {
         currencyCode: 'USD',
-        amount: '11.00',
-    }
+    },
 });
+
+*/
 
 </script>

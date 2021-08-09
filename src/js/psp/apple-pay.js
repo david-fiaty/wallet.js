@@ -54,11 +54,8 @@ module.exports = class ApplePay extends Payment {
         });
 
         // Payment amount
-        if (true) { // If amount and currency provided on init
-            this.setAmount(
-                this.params.payment.amount,
-                this.params.payment.currencyCode
-            );
+        if (true) { 
+            this.setAmount(this.params.amount);
         }
     }
 
@@ -69,12 +66,13 @@ module.exports = class ApplePay extends Payment {
             helper.logError('Wallet.js - Apple Pay is not available for this browser.');
             return;
         }
-
-        // Prepare variables
-        let merchantIdentifier = this.params.config.merchantId;
-        let promise = ApplePaySession.canMakePaymentsWithActiveCard(merchantIdentifier);
         
         // Promise
+        let promise = ApplePaySession.canMakePaymentsWithActiveCard(
+            this.params.config.merchantId
+        );
+
+        // Check payment status
         promise.then(
             function (canMakePayments) {
                 if (!canMakePayments) {
@@ -91,7 +89,7 @@ module.exports = class ApplePay extends Payment {
     requestPayment() {
         // Start the payment session
         let session = new ApplePaySession(1, {
-            currencyCode: this.currencyCode,
+            currencyCode: this.params.config.currencyCode,
             countryCode: this.params.config.countryCode,
             total: {
                 label: this.params.config.displayName,
