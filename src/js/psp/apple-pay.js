@@ -31,6 +31,6 @@ module.exports = class ApplePay extends Payment {
     }
 
     init (targetId) {
-
+        console.log('applepay loaded');
     }
 }
