@@ -15,12 +15,10 @@ module.exports = class GooglePay extends Payment {
             config: {
                 environment: 'TEST',
                 buttonStyle: 'white',
+                currencyCode: 'USD',
                 allowedPaymentMethods: ['CARD', 'TOKENIZED_CARD'],
                 allowedCardNetworks: ['AMEX', 'DISCOVER', 'INTERAC', 'JCB', 'MASTERCARD', 'VISA'],
                 allowedCardAuthMethods: ['PAN_ONLY', 'CRYPTOGRAM_3DS'],
-            },
-            payment: {
-                currencyCode: 'USD',
                 tokenizationType: 'PAYMENT_GATEWAY',
                 totalPriceStatus: 'FINAL',
             },
@@ -155,7 +153,7 @@ module.exports = class GooglePay extends Payment {
         return {
             merchantId: this.params.config.merchantId,
             paymentMethodTokenizationParameters: {
-                tokenizationType: this.params.payment.tokenizationType,
+                tokenizationType: this.params.config.tokenizationType,
                 parameters: {
                     'gateway': this.params.config.gatewayName,
                     'gatewayMerchantId': this.params.config.merchantId,
@@ -163,9 +161,11 @@ module.exports = class GooglePay extends Payment {
             },
             allowedPaymentMethods: this.params.config.allowedPaymentMethods,
             cardRequirements: {
-                allowedCardNetworks: this.params.config.allowedCardNetworks
+                allowedCardNetworks: this.params.config.allowedCardNetworks,
             },
-            transactionInfo: this.params.payment
+            transactionInfo: {
+                currencyCode: this.params.config.currencyCode,
+            }
         };
     }
 

@@ -86,7 +86,7 @@ module.exports = class ApplePay extends Payment {
             );
         }
         catch (e) {
-            helper.logError('Wallet.js - Apple Pay initialization error');
+            helper.logError('Wallet.js - Initialization error');
             helper.logError(e);
         }
     }
