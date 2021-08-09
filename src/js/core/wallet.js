@@ -1,20 +1,19 @@
 'use strict';
 
-const GooglePay = require('psp/googlepay');
-const ApplePay = require('psp/applepay');
+const GooglePay = require('psp/google-pay');
+const ApplePay = require('psp/apple-pay');
 
 module.exports = class Wallet {
-    constructor(config) {
-		this.config = config;
-
-		let gp = new GooglePay(this.config);
-
+    constructor(targetId, params) {
+		let wallet;
+		if (params.type == 'applepay') {
+			wallet = new ApplePay(targetId, params);
+		}
+		else if (params.type == 'googlepay') {
+			wallet = new GooglePay(targetId, params);
+		}
+		else {
+			throw new Error('Wallet.js - Unknown wallet type in parameters');
+		}
 	}
-
-	/*
-	pay() {
-		let gp = new  GooglePay(this.config);
-		gp.init();
-	}*/
-
 }

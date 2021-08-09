@@ -1,39 +1,20 @@
  <script src="wallet.js"></script>
 
 
- <button id="wallet" type="button" class="google-pay"></button>
-
+ <button id="wallet" type="button"></button>
 
 <script>
-var wallet = new Wallet({
-    targetId: 'wallet',
-    type: 'googlepay',
+var wallet = new Wallet('#wallet', {
+    type: 'applepay',
+    debug: true,
     config: {
-        environment: 'TEST',
-        merchantId: 'merchantId',
-        gatewayName: 'gatewayName',
-        buttonStyle: 'white',
-        allowedPaymentMethods: ['CARD', 'TOKENIZED_CARD'],
-        allowedCardNetworks: ['VISA', 'MASTERCARD'],
+        merchantId: 'pk_test_f4be3224-70a5-4441-be9b-abb59e3fcd31',
+        gatewayName: 'checkoutltd',
     },
     payment: {
         currencyCode: 'USD',
-        totalPriceStatus: 'FINAL',
-        totalPrice: 11.00
+        amount: '11.00',
     }
 });
 
-//wallet.pay();
-
-// google pay options
-/*
-button_selector
-allowed_card_networks VISA,MASTERCARD
-button_style white,black
-allowed_payment_methods CARD,TOKENIZED_CARD
-
-gateway
-gatewayMerchantId
-
-*/
 </script>
