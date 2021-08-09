@@ -44,6 +44,7 @@ module.exports = class GooglePay extends Payment {
         let button = document.querySelector(targetId);
         let buttonClasses = [
             'google-pay',
+            'google-pay-button',
             'google-pay-button-' + this.params.config.buttonStyle,
         ];
 
