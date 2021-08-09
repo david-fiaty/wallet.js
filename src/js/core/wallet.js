@@ -9,11 +9,4 @@ module.exports = class Wallet {
 		let gp = new GooglePay(targetId, params);
 
 	}
-
-	/*
-	pay() {
-		let gp = new  GooglePay(this.config);
-		gp.init();
-	}*/
-
 }
