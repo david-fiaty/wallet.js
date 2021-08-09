@@ -2,13 +2,35 @@
 
 require('../../css/apple-pay.css');
 
-module.exports = class ApplePay {
-    constructor(config) {
-        this.config = config;
+const Payment = require('core/payment');
+
+module.exports = class ApplePay extends Payment {
+    constructor(targetId, params) { 
+        // Default options
+        let defaultOptions = {
+            debug: false,
+            config: {
+
+            },
+            payment: {
+
+            },
+        };
+
+        // Required options
+        let requiredOptions = [
+            'merchantId',
+            'gatewayName',
+        ];
+
+        // Parent constructor
+        super(defaultOptions, requiredOptions, params);  
+
+        // Initialize
+        this.init(targetId);
     }
 
-    test() {
-        console.log('ApplePay');
-        console.log(this.config);
+    init (targetId) {
+
     }
 }

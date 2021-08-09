@@ -3,15 +3,11 @@
 require('../../css/google-pay.css');
 
 const script = require('scriptjs');
-const helper = require('core/helper');
-
 const Payment = require('core/payment');
+const helper = require('core/helper');
 
 module.exports = class GooglePay extends Payment {
     constructor(targetId, params) { 
-        // Parent constructor
-        super();      
-
         // Default options
         let defaultOptions = {
             debug: false,
@@ -33,11 +29,12 @@ module.exports = class GooglePay extends Payment {
         let requiredOptions = [
             'merchantId',
             'gatewayName',
-        ]
+        ];
 
-        // Extend defaults
-        this.params = helper.buildOptions(defaultOptions, requiredOptions, params);
+        // Parent constructor
+        super(defaultOptions, requiredOptions, params); 
 
+        // Initialize
         this.init(targetId);
     }
 
