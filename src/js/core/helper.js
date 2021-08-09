@@ -27,7 +27,7 @@ module.exports = {
 			throw new Error('Wallet.js Google Pay - The required parameter "amount" is missing or invalid.');
         }
 
-        if (currencyCode.length == 0) {
+        if (!currencyCode || currencyCode.length == 0) {
 			throw new Error('Wallet.js Google Pay - The required parameter "currencyCode" is missing or invalid.');
         }
 	},

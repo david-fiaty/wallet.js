@@ -3,15 +3,11 @@
 require('../../css/google-pay.css');
 
 const script = require('scriptjs');
-const helper = require('core/helper');
-
 const Payment = require('core/payment');
+const helper = require('core/helper');
 
 module.exports = class GooglePay extends Payment {
     constructor(targetId, params) { 
-        // Parent constructor
-        super();      
-
         // Default options
         let defaultOptions = {
             debug: false,
@@ -33,25 +29,30 @@ module.exports = class GooglePay extends Payment {
         let requiredOptions = [
             'merchantId',
             'gatewayName',
-        ]
+        ];
 
-        // Extend defaults
-        this.params = helper.buildOptions(defaultOptions, requiredOptions, params);
+        // Parent constructor
+        super(defaultOptions, requiredOptions, params); 
 
+        // Initialize
         this.init(targetId);
     }
 
     init (targetId) {
         // Prepare variables
-        var self = this;
-        var button = document.querySelector(targetId);
-        var buttonClass = 'google-pay-button-' + this.params.config.buttonStyle;
+        let self = this;
+        let button = document.querySelector(targetId);
+        let buttonClasses = [
+            'google-pay',
+            'google-pay-button',
+            'google-pay-button-' + this.params.config.buttonStyle,
+        ];
 
         // Load the remote script
         script(process.env.GOOGLE_PAY_SCRIPT);
 
         // Button display
-        button.classList.add(buttonClass);
+        button.classList.add(...buttonClasses);
 
         // Payment amount
         if (true) { // If amount and currency provided on init
@@ -71,7 +72,7 @@ module.exports = class GooglePay extends Payment {
     preparePayment()
     {
         // Variables
-        var self = this;
+        let self = this;
 
         // Payment client
         this.client = this.getPaymentClient();
@@ -94,8 +95,8 @@ module.exports = class GooglePay extends Payment {
 
     requestPayment() {
         // Prepare variables
-        var self = this;
-        var paymentData = this.getPaymentData();
+        let self = this;
+        let paymentData = this.getPaymentData();
 
         // Validate amount
         try {
