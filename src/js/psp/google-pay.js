@@ -43,9 +43,9 @@ module.exports = class GooglePay extends Payment {
 
     init (targetId) {
         // Prepare variables
-        var self = this;
-        var button = document.querySelector(targetId);
-        var buttonClass = 'google-pay-button-' + this.params.config.buttonStyle;
+        let self = this;
+        let button = document.querySelector(targetId);
+        let buttonClass = 'google-pay-button-' + this.params.config.buttonStyle;
 
         // Load the remote script
         script(process.env.GOOGLE_PAY_SCRIPT);
@@ -71,7 +71,7 @@ module.exports = class GooglePay extends Payment {
     preparePayment()
     {
         // Variables
-        var self = this;
+        let self = this;
 
         // Payment client
         this.client = this.getPaymentClient();
@@ -94,8 +94,8 @@ module.exports = class GooglePay extends Payment {
 
     requestPayment() {
         // Prepare variables
-        var self = this;
-        var paymentData = this.getPaymentData();
+        let self = this;
+        let paymentData = this.getPaymentData();
 
         // Validate amount
         try {
