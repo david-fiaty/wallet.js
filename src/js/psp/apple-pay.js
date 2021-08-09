@@ -89,28 +89,21 @@ module.exports = class ApplePay extends Payment {
     }
 
     requestPayment() {
-        // Prepare the parameters
-        var runningTotal         = Utilities.getQuoteValue();
-        var billingAddress       = Utilities.getBillingAddress();
-
-        // Build the payment request
-        var paymentRequest = {
-            currencyCode: Utilities.getQuoteCurrency(),
-            countryCode: window.checkoutConfig.defaultCountryId,
-            total: {
-                label: Utilities.getStoreName(),
-                amount: runningTotal
-            },
-            supportedNetworks: self.getSupportedNetworks(),
-            merchantCapabilities: self.getMerchantCapabilities()
-        };
-
         // Start the payment session
-        var session = new ApplePaySession(1, paymentRequest);
+        let session = new ApplePaySession(1, {
+            currencyCode: this.currencyCode,
+            countryCode: this.params.config.countryCode,
+            total: {
+                label: this.params.config.displayName,
+                amount: this.amount
+            },
+            supportedNetworks: this.params.config.supportedNetworks,
+            merchantCapabilities: this.params.config.merchantCapabilities,
+        });
 
         // Merchant Validation
         session.onvalidatemerchant = function (event) {
-            var promise = self.performValidation(event.validationURL);
+            let promise = self.performValidation(event.validationURL);
             promise.then(
                 function (merchantSession) {
                     session.completeMerchantValidation(merchantSession);
@@ -124,12 +117,12 @@ module.exports = class ApplePay extends Payment {
 
         // Shipping contact
         session.onshippingcontactselected = function (event) {
-            var status = ApplePaySession.STATUS_SUCCESS;
+            let status = ApplePaySession.STATUS_SUCCESS;
 
             // Shipping info
-            var shippingOptions = [];
+            let shippingOptions = [];
         
-            var newTotal = {
+            let newTotal = {
                 type: 'final',
                 label: ap['storeName'],
                 amount: runningTotal
@@ -140,8 +133,8 @@ module.exports = class ApplePay extends Payment {
 
         // Shipping method selection
         session.onshippingmethodselected = function (event) {
-            var status = ApplePaySession.STATUS_SUCCESS;
-            var newTotal = {
+            let status = ApplePaySession.STATUS_SUCCESS;
+            let newTotal = {
                 type: 'final',
                 label: ap['storeName'],
                 amount: runningTotal
@@ -152,7 +145,7 @@ module.exports = class ApplePay extends Payment {
 
         // Payment method selection
         session.onpaymentmethodselected = function (event) {
-            var newTotal = {
+            let newTotal = {
                 type: 'final',
                 label: Utilities.getStoreName(),
                 amount: runningTotal
@@ -164,7 +157,7 @@ module.exports = class ApplePay extends Payment {
         // Payment method authorization
         session.onpaymentauthorized = function (event) {
             // Prepare the payload
-            var payload = {
+            let payload = {
                 methodId: METHOD_ID,
                 cardToken: event.payment.token,
                 source: METHOD_ID
