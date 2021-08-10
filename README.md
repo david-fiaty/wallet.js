@@ -52,11 +52,6 @@ var wallet = new Wallet('#wallet', {
     },
 });
 ```
-Option name | Type | Required | Description
-:---------- | :---- | :------- | :-----------
-merchantId | string | yes | Merchant ID
-currencyCode | string | yes | Payment currency code
-validationUrl | string | yes | Validation URL
 
 **Google Pay example**
 ```javascript
@@ -71,12 +66,19 @@ var wallet = new Wallet('#wallet', {
 });
 ```
 
+## Configuration options
+
+
+**Apple Pay configuration**
+Option name | Type | Required | Description
+:---------- | :---- | :------- | :-----------
+merchantId | string | yes | Merchant ID
+currencyCode | string | yes | Payment currency code
+validationUrl | string | yes | Validation URL
+
+**Google Pay configuration**
 Option name | Type | Required | Description
 :---------- | :---- | :------- | :-----------
 merchantId | string | yes | Merchant ID
 currencyCode | string | yes | Payment currency code
 gatewayName | string | yes | Payment configuration
-
-
-
-
