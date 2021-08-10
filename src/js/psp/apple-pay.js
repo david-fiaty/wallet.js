@@ -107,7 +107,7 @@ module.exports = class ApplePay extends Payment {
             merchantCapabilities: this.params.config.merchantCapabilities,
         });
 
-        // Merchant session Validation
+        // Merchant session validation
         session.onvalidatemerchant = function (e) {
             let promise = self.validateSession(e);
             promise.then(
@@ -123,48 +123,58 @@ module.exports = class ApplePay extends Payment {
 
         // Shipping contact
         session.onshippingcontactselected = function (event) {
-            let status = ApplePaySession.STATUS_SUCCESS;
-
-            // Shipping info
+            // Prepare variables
             let shippingOptions = [];
-        
             let newTotal = {
                 type: 'final',
-                label: ap['storeName'],
-                amount: runningTotal
+                label: self.params.config.windowTitle,
+                amount: self.amount,
             };
         
-            session.completeShippingContactSelection(status, shippingOptions, newTotal, self.getLineItems());
+            // Complete selection
+            session.completeShippingContactSelection(
+                ApplePaySession.STATUS_SUCCESS,
+                shippingOptions,
+                newTotal,
+                self.getLineItems(),
+            );
         }
 
         // Shipping method selection
         session.onshippingmethodselected = function (event) {
-            let status = ApplePaySession.STATUS_SUCCESS;
             let newTotal = {
                 type: 'final',
-                label: ap['storeName'],
-                amount: runningTotal
+                label: self.params.config.windowTitle,
+                amount: self.amount,
             };
 
-            session.completeShippingMethodSelection(status, newTotal, self.getLineItems());
+            // Complete selection
+            session.completeShippingMethodSelection(
+                ApplePaySession.STATUS_SUCCESS,
+                newTotal,
+                self.getLineItems(),
+            );
         }
 
         // Payment method selection
         session.onpaymentmethodselected = function (event) {
+            // Prepare variables
             let newTotal = {
                 type: 'final',
-                label: Utilities.getStoreName(),
-                amount: runningTotal
+                label: self.params.config.windowTitle,
+                amount: self.amount,
             };
         
-            session.completePaymentMethodSelection(newTotal, self.getLineItems());
+            session.completePaymentMethodSelection(
+                newTotal, 
+                self.getLineItems(),
+            );
         }
 
         // Payment method authorization
         session.onpaymentauthorized = function (event) {
             // Prepare the payload
             let payload = {
-                methodId: METHOD_ID,
                 cardToken: event.payment.token,
                 source: METHOD_ID
             };
@@ -184,20 +194,18 @@ module.exports = class ApplePay extends Payment {
 
                     if (success) {
                         // Redirect to success page
-                        FullScreenLoader.startLoader();
-                        RedirectOnSuccessAction.execute();
                     }
                 }
             ).catch(
                 function (error) {
-                    Utilities.log(error);
+                    console.log(error);
                 }
             );
         }
 
         // Session cancellation
         session.oncancel = function (event) {
-            Utilities.log(event);
+            console.log(event);
         }
 
         // Begin session
