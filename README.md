@@ -1,11 +1,26 @@
 # wallet.js
-Frontend integration for wallet payments
+Wallet.js is a Javascript integration for wallet payments like Apple Pay and Google Pay.
 
-## Installation
+This application built with Node.js generates a single frontend Javascript file that acts as a wrapper for walltet payments,  allowing a quick and easy integration. 
 
+## How to use
+Insert the wallet.js file into an HTML page:
 
-## Usage
+```html
+<script src="wallet.js"></script>
+```
 
+Create an HTML button that will trigger the payment action:
+
+```html
+<button id="wallet" type="button"></button>
+```
+
+Initialize the wallet:
+
+```javascript
+    var test = new Pay();
+```
 
 ## Supported payments
 * Apple Pay
