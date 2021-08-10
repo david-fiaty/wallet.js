@@ -50,7 +50,7 @@ var wallet = new Wallet('#wallet', {
 });
 ```
 
-### Apple Pay configuration
+### Apple Pay
 ```javascript
 var wallet = new Wallet('#wallet', {
     type: 'applepay',
