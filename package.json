@@ -29,7 +29,8 @@
   "dependencies": {
     "deepmerge": "^4.2.2",
     "dotenv": "^10.0.0",
-    "scriptjs": "^2.5.9"
+    "scriptjs": "^2.5.9",
+    "translate": "^1.2.3"
   },
   "devDependencies": {
     "@babel/core": "^7.15.0",
