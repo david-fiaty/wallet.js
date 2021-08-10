@@ -60,8 +60,6 @@ var wallet = new Wallet('#wallet', {
 ```
 
 ## Configuration options
-The following wallet configuration options are available on initialization:
-
 **Global**
 Name | Type | Required | Description
 ------ | ---- | ------- | -----------
