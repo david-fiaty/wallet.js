@@ -82,7 +82,7 @@ module.exports = class ApplePay extends Payment {
         },
       );
     } catch (error) {
-      helper.logError('Wallet.js - ' + error);
+      helper.logError(error);
     }
   }
 
