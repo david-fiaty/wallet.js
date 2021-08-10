@@ -64,7 +64,7 @@ var wallet = new Wallet('#wallet', {
 Name | Type | Required | Description
 :------ | :---- | :------- | :-----------
 type | string  | yes | Wallet payment type
-amount | float  | no | Wallet payment amount
+amount | float  | yes | Wallet payment amount
 config | object | yes | Payment provider configuration
 
 **Apple Pay**
