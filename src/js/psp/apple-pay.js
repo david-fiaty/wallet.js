@@ -230,4 +230,27 @@ module.exports = class ApplePay extends Payment {
     getLineItems () {
         return [];
     }
+
+    sendPaymentRequest (paymentData) {
+        return new Promise(
+            function (resolve, reject) {
+                $.ajax({
+                    url: Utilities.getUrl('payment/placeorder'),
+                    type: "POST",
+                    data: paymentData,
+                    success: function (data, textStatus, xhr) {
+                        if (data.success === true) {
+                            resolve(data.success);
+                        } else {
+                            reject;
+                        }
+                    },
+                    error: function (xhr, textStatus, error) {
+                        Utilities.log(error);
+                        reject;
+                    }
+                });
+            }
+        );
+    }
 }
