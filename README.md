@@ -63,9 +63,25 @@ var wallet = new Wallet('#wallet', {
 });
 ```
 
-## Configuration options
+## Wallet configuration options
 The following wallet configuration options are available on initialization:
 
+Name | Type | Default | Required | Description
+------ | ---- | ------- | ------- | -----------
+type | string | null | yes | Payment type
+amount | float | null | no | Payment amount
+config | object | null | yes | Payment configuration
+
+## Payment configuration options
+
+### Apple Pay 
+Name | Type | Default | Required | Description
+------ | ---- | ------- | ------- | -----------
+type | string | null | yes | Payment type
+amount | float | null | no | Payment amount
+config | object | null | yes | Payment configuration
+
+### Google Pay 
 Name | Type | Default | Required | Description
 ------ | ---- | ------- | ------- | -----------
 type | string | null | yes | Payment type
