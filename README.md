@@ -63,20 +63,20 @@ var wallet = new Wallet('#wallet', {
 **Global**
 Name | Type | Required | Description
 ------ | ---- | ------- | -----------
-type | string  | yes | Payment type
-amount | float  | no | Payment amount
-config | object | yes | Payment configuration
+type | string  | yes | Wallet payment type
+amount | float  | no | Wallet payment amount
+config | object | yes | Payment provider configuration
 
 **Apple Pay**
 Name | Type | Required | Description
 ------ | ---- | ------- | -----------
-merchantId | string | yes | Payment type
-currencyCode | float | no | Payment amount
-validationUrl | object | yes | Payment configuration
+merchantId | string | yes | Merchant ID
+currencyCode | string | yes | Payment currency code
+validationUrl | string | yes | Validation URL
 
 **Google Pay**
 Name | Type | Required | Description
 ------ | ---- | ------- | -----------
-merchantId | string | yes | Payment type
-currencyCode | float | no | Payment amount
-gatewayName | object | yes | Payment configuration
+merchantId | string | yes | Merchant ID
+currencyCode | string | yes | Payment currency code
+gatewayName | string | yes | Payment configuration
