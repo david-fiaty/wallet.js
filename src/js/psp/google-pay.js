@@ -3,8 +3,9 @@
 require('../../css/google-pay.css');
 
 const script = require('scriptjs');
-const Payment = require('core/payment');
 const helper = require('core/helper');
+
+const Payment = require('core/payment');
 
 module.exports = class GooglePay extends Payment {
     constructor(targetId, params) { 
@@ -14,12 +15,10 @@ module.exports = class GooglePay extends Payment {
             config: {
                 environment: 'TEST',
                 buttonStyle: 'white',
+                currencyCode: 'USD',
                 allowedPaymentMethods: ['CARD', 'TOKENIZED_CARD'],
                 allowedCardNetworks: ['AMEX', 'DISCOVER', 'INTERAC', 'JCB', 'MASTERCARD', 'VISA'],
                 allowedCardAuthMethods: ['PAN_ONLY', 'CRYPTOGRAM_3DS'],
-            },
-            payment: {
-                currencyCode: 'USD',
                 tokenizationType: 'PAYMENT_GATEWAY',
                 totalPriceStatus: 'FINAL',
             },
@@ -54,19 +53,16 @@ module.exports = class GooglePay extends Payment {
         // Button display
         button.classList.add(...buttonClasses);
 
-        // Payment amount
-        if (true) { // If amount and currency provided on init
-            this.setAmount(
-                this.params.payment.amount,
-                this.params.payment.currencyCode
-            );
-        }
-
         // Button event
         button.addEventListener('click', function () {    
             self.preparePayment();
             self.requestPayment();
         });
+
+        // Payment amount
+        if (true) { 
+            this.setAmount(this.params.amount);
+        }
     }
 
     preparePayment()
@@ -100,7 +96,7 @@ module.exports = class GooglePay extends Payment {
 
         // Validate amount
         try {
-            helper.checkAmount(this.amount, this.currencyCode);
+            helper.checkAmount(this.amount, this.params.config.currencyCode);
         }
         catch(e) {
             helper.logError(e);
@@ -108,7 +104,7 @@ module.exports = class GooglePay extends Payment {
 
         // Update amount
         paymentData.transactionInfo.totalPrice = this.amount;
-        paymentData.transactionInfo.currencyCode = this.currencyCode;
+        paymentData.transactionInfo.currencyCode = this.params.config.currencyCode;
 
         // Load the payment data
         this.client.loadPaymentData(paymentData).then(
@@ -146,7 +142,7 @@ module.exports = class GooglePay extends Payment {
         // TransactionInfo must be set but does not affect cache
         this.paymentData.transactionInfo = {
             totalPriceStatus: 'NOT_CURRENTLY_KNOWN',
-            currencyCode: this.currencyCode,
+            currencyCode: this.params.config.currencyCode,
         };
 
         this.client.prefetchPaymentData(this.paymentData);
@@ -157,7 +153,7 @@ module.exports = class GooglePay extends Payment {
         return {
             merchantId: this.params.config.merchantId,
             paymentMethodTokenizationParameters: {
-                tokenizationType: this.params.payment.tokenizationType,
+                tokenizationType: this.params.config.tokenizationType,
                 parameters: {
                     'gateway': this.params.config.gatewayName,
                     'gatewayMerchantId': this.params.config.merchantId,
@@ -165,9 +161,11 @@ module.exports = class GooglePay extends Payment {
             },
             allowedPaymentMethods: this.params.config.allowedPaymentMethods,
             cardRequirements: {
-                allowedCardNetworks: this.params.config.allowedCardNetworks
+                allowedCardNetworks: this.params.config.allowedCardNetworks,
             },
-            transactionInfo: this.params.payment
+            transactionInfo: {
+                currencyCode: this.params.config.currencyCode,
+            }
         };
     }
 
