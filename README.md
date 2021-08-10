@@ -30,6 +30,13 @@ var wallet = new Wallet('#wallet', {
 
 The **type** and **config** options are required upon initialization. The **amount** option can be provided when initializing the wallet, or at a later stage.
 
+## Payment configuration 
+The **config** option takes parameters for a specific payment method.
+
+### Google Pay configuration
+
+### Apple Pay configuration
+
 ## Supported payment methods
 * Apple Pay
 * Google Pay
