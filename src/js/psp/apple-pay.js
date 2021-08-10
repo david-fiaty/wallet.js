@@ -92,6 +92,9 @@ module.exports = class ApplePay extends Payment {
     }
 
     requestPayment() {
+        // Prepare variables
+        let self = this;
+
         // Start the payment session
         let session = new ApplePaySession(1, {
             currencyCode: this.params.config.currencyCode,
@@ -199,5 +202,20 @@ module.exports = class ApplePay extends Payment {
 
         // Begin session
         session.begin();
+    }
+
+    performValidation (url) {        
+        return new Promise(
+            function (resolve, reject) {
+                let xhr = new XMLHttpRequest();
+                xhr.onload = function () {
+                    resolve(JSON.parse(this.responseText));
+                };
+                xhr.onerror = reject;
+                // Todo- improve params handling
+                xhr.open('GET', this.params.config.config.validationURL + '?u=' + url); 
+                xhr.send();
+            }
+        );
     }
 }
