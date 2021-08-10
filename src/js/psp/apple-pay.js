@@ -108,8 +108,8 @@ module.exports = class ApplePay extends Payment {
         });
 
         // Merchant Validation
-        session.onvalidatemerchant = function (event) {
-            let promise = self.performValidation(event.validationURL);
+        session.onvalidatemerchant = function (e) {
+            let promise = self.performValidation(e);
             promise.then(
                 function (merchantSession) {
                     session.completeMerchantValidation(merchantSession);
@@ -204,7 +204,7 @@ module.exports = class ApplePay extends Payment {
         session.begin();
     }
 
-    performValidation (url) {        
+    performValidation (e) {        
         return new Promise(
             function (resolve, reject) {
                 let xhr = new XMLHttpRequest();
@@ -213,7 +213,7 @@ module.exports = class ApplePay extends Payment {
                 };
                 xhr.onerror = reject;
                 // Todo- improve params handling
-                xhr.open('GET', this.params.config.config.validationURL + '?u=' + url); 
+                xhr.open('GET', this.params.config.config.validationURL + '?u=' + e.validationURL); 
                 xhr.send();
             }
         );
