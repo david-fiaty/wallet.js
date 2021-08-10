@@ -85,9 +85,9 @@ module.exports = class ApplePay extends Payment {
                 }
             );
         }
-        catch (e) {
+        catch (error) {
             helper.logError('Wallet.js - Initialization error');
-            helper.logError(e);
+            helper.logError(error);
         }
     }
 
@@ -107,16 +107,16 @@ module.exports = class ApplePay extends Payment {
             merchantCapabilities: this.params.config.merchantCapabilities,
         });
 
-        // Merchant Validation
+        // Merchant session Validation
         session.onvalidatemerchant = function (e) {
-            let promise = self.performValidation(e);
+            let promise = self.validateSession(e);
             promise.then(
                 function (merchantSession) {
                     session.completeMerchantValidation(merchantSession);
                 }
             ).catch(
                 function (error) {
-                    Utilities.log(error);
+                    console.log(error);
                 }
             );
         }
@@ -204,7 +204,7 @@ module.exports = class ApplePay extends Payment {
         session.begin();
     }
 
-    performValidation (e) {        
+    validateSession (e) {        
         return new Promise(
             function (resolve, reject) {
                 let xhr = new XMLHttpRequest();

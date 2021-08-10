@@ -7,8 +7,8 @@ module.exports = {
 		try {
 			this.validateOptions(required, params);
 		}	
-		catch(msg) {
-			this.logError(msg);
+		catch(error) {
+			this.logError(error);
 		}
 
 		return merge(defaults, params);
@@ -32,7 +32,7 @@ module.exports = {
         }
 	},
 
-	logError: function (e) {
-		console.log('%c ' + e, 'color: red');
+	logError: function (error) {
+		console.log('%c ' + error, 'color: red');
 	}
 }
