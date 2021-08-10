@@ -60,7 +60,7 @@ module.exports = class ApplePay extends Payment {
     // Check session
     try {
       if (window.ApplePaySession) {
-        helper.logError('Wallet.js - Apple Pay is not available for this browser.');
+        helper.logError('Apple Pay is not currently available for this browser.');
         return;
       }
 
@@ -73,7 +73,7 @@ module.exports = class ApplePay extends Payment {
       promise.then(
         (canMakePayments) => {
           if (!canMakePayments) {
-            helper.logError('Wallet.js - Apple Pay is not available for this browser.');
+            helper.logError('Apple Pay is available but not currently enabled.');
           }
         },
       ).catch(
