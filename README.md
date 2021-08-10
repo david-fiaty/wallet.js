@@ -75,14 +75,14 @@ config | object | yes | Payment configuration
 ### Apple Pay configuration
 
 Name | Type | Required | Description
------- | ---- | ------- | ------- | -----------
+------ | ---- | ------- | -----------
 merchantId | string | yes | Payment type
 currencyCode | float | no | Payment amount
 validationUrl | object | yes | Payment configuration
 
 ### Google Pay configuration
 Name | Type | Required | Description
------- | ---- | ------- | ------- | -----------
+------ | ---- | ------- | -----------
 merchantId | string | yes | Payment type
 currencyCode | float | no | Payment amount
 gatewayName | object | yes | Payment configuration
