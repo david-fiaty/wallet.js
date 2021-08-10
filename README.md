@@ -33,19 +33,6 @@ The **type** and **config** options are required upon initialization. The **amou
 ## Wallet initialization 
 The **config** option takes parameters for a specific payment method. The examples below use the minimum requirements for a wallet payment configuration.
 
-**Google Pay example**
-```javascript
-var wallet = new Wallet('#wallet', {
-    type: 'googlepay',
-    amount: 11.00,
-    config: {
-        merchantId: 'merchant_id',
-        gatewayName: 'gateway_name',
-        currencyCode: 'USD',
-    },
-});
-```
-
 **Apple Pay example**
 ```javascript
 var wallet = new Wallet('#wallet', {
@@ -55,6 +42,19 @@ var wallet = new Wallet('#wallet', {
         merchantId: 'merchant_id-70a5-4441-be9b-abb59e3fcd31',
         validationUrl: 'https://validation-url', 
         currencyCode: 'USD',  
+    },
+});
+```
+
+**Google Pay example**
+```javascript
+var wallet = new Wallet('#wallet', {
+    type: 'googlepay',
+    amount: 11.00,
+    config: {
+        merchantId: 'merchant_id',
+        gatewayName: 'gateway_name',
+        currencyCode: 'USD',
     },
 });
 ```
