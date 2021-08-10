@@ -32,11 +32,11 @@ var wallet = new Wallet('#wallet', {
 The **type** and **config** options are required upon initialization. The **amount** option can be provided when initializing the wallet, or at a later stage.
 
 **Required options**
-Option name | Type | Required | Description
-:---------- | :---- | :------- | :-----------
-`type` | string  | yes | Wallet payment type
-`amount` | float  | yes | Wallet payment amount
-`config` | object | yes | Payment provider configuration
+Option name | Type | Description
+:---------- | :---- | :-----------
+`type` | string | Wallet payment type
+`amount` | float | Wallet payment amount
+`config` | object | Payment provider configuration
 
 ## Apple Pay configuration 
 **Apple Pay initialization**
@@ -53,11 +53,11 @@ var wallet = new Wallet('#wallet', {
 ```
 
 **Required options**
-Option name | Type | Required | Description
-:---------- | :---- | :------- | :-----------
-`merchantId` | string | yes | Merchant ID
-`currencyCode` | string | yes | Payment currency code
-`validationUrl` | string | yes | Validation URL
+Option name | Type | Description
+:---------- | :---- | :-----------
+`merchantId` | string | Merchant ID
+`currencyCode` | string | Payment currency code
+`validationUrl` | string | Validation URL
 
 ## Google Pay configuration 
 **Google Pay initialization**
@@ -74,8 +74,8 @@ var wallet = new Wallet('#wallet', {
 ```
 
 **Required options**
-Option name | Type | Required | Description
-:---------- | :---- | :------- | :-----------
-`merchantId` | string | yes | Merchant ID
-`currencyCode` | string | yes | Payment currency code
-`gatewayName` | string | yes | Payment configuration
+Option name | Type | Description
+:---------- | :---- :-----------
+`merchantId` | string | Merchant ID
+`currencyCode` | string | Payment currency code
+`gatewayName` | string | Payment configuration
