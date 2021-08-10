@@ -10,16 +10,25 @@ module.exports = class ApplePay extends Payment {
     const defaultOptions = {
       debug: false,
       config: {
-
-      },
-      payment: {
-
+        windowTitle: 'Apple Pay transaction window', 
+        currencyCode: 'USD',  
+        validationUrl: 'https://validation-url', 
+        supportedNetworks: [
+            'amex',
+            'masterCard',
+            'visa',
+        ],
+        merchantCapabilities: [
+            'supportsCredit',
+            'supportsDebit',
+        ],
       },
     };
 
     // Required options
     const requiredOptions = [
       'merchantId',
+      'validationUrl',
     ];
 
     // Parent constructor
