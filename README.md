@@ -62,24 +62,21 @@ var wallet = new Wallet('#wallet', {
 ## Configuration options
 The following wallet configuration options are available on initialization:
 
+**Global**
 Name | Type | Required | Description
 ------ | ---- | ------- | -----------
 type | string  | yes | Payment type
 amount | float  | no | Payment amount
 config | object | yes | Payment configuration
 
-#### Apple Pay
-The following Apple Pay configuration options are available on initialization:
-
+**Apple Pay**
 Name | Type | Required | Description
 ------ | ---- | ------- | -----------
 merchantId | string | yes | Payment type
 currencyCode | float | no | Payment amount
 validationUrl | object | yes | Payment configuration
 
-#### Google Pay configuration
-The following Google Pay configuration options are available on initialization:
-
+**Google Pay**
 Name | Type | Required | Description
 ------ | ---- | ------- | -----------
 merchantId | string | yes | Payment type
