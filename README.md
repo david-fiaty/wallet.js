@@ -24,4 +24,4 @@ Initialize the wallet:
 
 ## Supported payments
 * Apple Pay
-* Google Pays
+* Google Pay
