@@ -31,7 +31,7 @@ var wallet = new Wallet('#wallet', {
 ```
 The **type** and **config** options are required upon initialization. The **amount** option can be provided when initializing the wallet, or at a later stage.
 
-**Wallet options**
+**Wallet configuration options**
 Option name | Type | Required | Description
 :---------- | :---- | :------- | :-----------
 `type` | string  | yes | Wallet payment type
@@ -52,7 +52,7 @@ var wallet = new Wallet('#wallet', {
 });
 ```
 
-**Apple Pay options**
+**Apple Pay configuration options**
 Option name | Type | Required | Description
 :---------- | :---- | :------- | :-----------
 `merchantId` | string | yes | Merchant ID
@@ -74,7 +74,7 @@ var wallet = new Wallet('#wallet', {
 });
 ```
 
-**Google Pay options**
+**Google Pay configuration options**
 Option name | Type | Required | Description
 :---------- | :---- | :------- | :-----------
 `merchantId` | string | yes | Merchant ID
