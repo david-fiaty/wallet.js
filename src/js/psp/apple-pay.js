@@ -5,12 +5,12 @@ const helper = require('core/helper');
 const Payment = require('core/payment');
 
 module.exports = class ApplePay extends Payment {
-  constructor(targetId, params) {
+  constructor(targetSelector, params) {
     // Default options
     const defaultOptions = {
       debug: false,
       config: {
-        windowTitle: 'Apple Pay transaction window', 
+        windowTitle: '', 
         currencyCode: 'USD',  
         validationUrl: 'https://validation-url', 
         supportedNetworks: [
@@ -35,13 +35,13 @@ module.exports = class ApplePay extends Payment {
     super(defaultOptions, requiredOptions, params);
 
     // Initialize
-    this.init(targetId);
+    this.init(targetSelector);
   }
 
-  init(targetId) {
+  init(targetSelector) {
     // Prepare variables
     const self = this;
-    const button = document.querySelector(targetId);
+    const button = document.querySelector(targetSelector);
     const buttonClasses = [
       'apple-pay',
       'apple-pay-button',
