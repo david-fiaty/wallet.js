@@ -22,7 +22,7 @@ The **config** option takes parameters for a specific payment method. The exampl
 **Wallet initialization**
 ```javascript
 var wallet = new Wallet('#wallet', {
-    type: 'payment_method',
+    type: 'payment_method_name',
     amount: 11.00,
     config: {
         // Payment configuration
@@ -31,7 +31,7 @@ var wallet = new Wallet('#wallet', {
 ```
 The **type** and **config** options are required upon initialization. The **amount** option can be provided when initializing the wallet, or at a later stage.
 
-**Wallet configuration options**
+**Required options**
 Option name | Type | Required | Description
 :---------- | :---- | :------- | :-----------
 `type` | string  | yes | Wallet payment type
@@ -52,13 +52,12 @@ var wallet = new Wallet('#wallet', {
 });
 ```
 
-**Apple Pay configuration options**
+**Required options**
 Option name | Type | Required | Description
 :---------- | :---- | :------- | :-----------
 `merchantId` | string | yes | Merchant ID
 `currencyCode` | string | yes | Payment currency code
 `validationUrl` | string | yes | Validation URL
-
 
 ## Google Pay configuration 
 **Google Pay initialization**
@@ -74,7 +73,7 @@ var wallet = new Wallet('#wallet', {
 });
 ```
 
-**Google Pay configuration options**
+**Required options**
 Option name | Type | Required | Description
 :---------- | :---- | :------- | :-----------
 `merchantId` | string | yes | Merchant ID
