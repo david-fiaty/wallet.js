@@ -67,7 +67,7 @@ var wallet = new Wallet('#wallet', {
 The following wallet configuration options are available on initialization:
 
 Name | Type | Required | Description
------- | ---- | ------- | ------- | -----------
+------ | ---- | ------- | -----------
 type | string  | yes | Payment type
 amount | float  | no | Payment amount
 config | object | yes | Payment configuration
