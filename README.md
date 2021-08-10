@@ -4,7 +4,7 @@ Wallet.js is a Javascript integration for wallet payments like Apple Pay and Goo
 This application built with Node.js generates a single frontend Javascript file that acts as a wrapper for walltet payments,  allowing a quick and easy integration. 
 
 ## How to use
-Insert the wallet.js file into an HTML page:
+Call the wallet.js from your HTML page:
 
 ```html
 <script src="wallet.js"></script>
