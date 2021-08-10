@@ -64,10 +64,22 @@ var wallet = new Wallet('#wallet', {
 ```
 
 ## Configuration options
-The following wallet configuration options are available on initialization:<br>
+The following wallet configuration options are available on initialization:
+
+
+Option | Type | Default | Description
+------ | ---- | ------- | -----------
+jsonData | string | data | System path or URL to a JSON data file.
+caseSensitive | boolean | true | Should the word detection be case sensitive.
+language | string | en_GB | The JSON language file to load. Use ISO 639-1 Codes/Regions. See https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes.
+theme | string | red-ocean | The theme to use for the tooltip box
+linkActive | boolean | true | Should a click on a tooltip link redirect open an URL
+linkTarget | string | _blank | Should a click on a tooltip open a link in a new window or in the same window
+closeButton | boolean | true |	Should the tooltip box present a close button	
+
+
 
 Name | Type | Default | Required | Description
-
 ------ | ---- | ------- | -----------
 type | string | null | yes | Payment type
 amount | float | null | yes | Payment amount
