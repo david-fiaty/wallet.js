@@ -79,3 +79,8 @@ Option name | Type | Description
 `merchantId` | string | Merchant ID
 `currencyCode` | string | Payment currency code
 `gatewayName` | string | Payment configuration
+
+## License
+This sofware is released under the GNU GPL3 license. See <http://www.gnu.org/licenses> for more information.<br>
+Copyright (C) 2021 David Fiaty, all rights reserved.<br>
+[www.davidfiaty.com](https://www.davidfiaty.com "David Fiaty")
