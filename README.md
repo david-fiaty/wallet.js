@@ -72,16 +72,15 @@ type | string | null | yes | Payment type
 amount | float | null | no | Payment amount
 config | object | null | yes | Payment configuration
 
-## Payment configuration
+### Apple Pay configuration
 
-### Apple Pay 
 Name | Type | Default | Required | Description
 ------ | ---- | ------- | ------- | -----------
 type | string | null | yes | Payment type
 amount | float | null | no | Payment amount
 config | object | null | yes | Payment configuration
 
-### Google Pay 
+### Google Pay configuration
 Name | Type | Default | Required | Description
 ------ | ---- | ------- | ------- | -----------
 type | string | null | yes | Payment type
