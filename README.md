@@ -36,9 +36,9 @@ The **config** option takes parameters for a specific payment method. The exampl
 **Global configuration**
 Option name | Type | Required | Description
 :---------- | :---- | :------- | :-----------
-type | string  | yes | Wallet payment type
-amount | float  | yes | Wallet payment amount
-config | object | yes | Payment provider configuration
+`type` | string  | yes | Wallet payment type
+`amount` | float  | yes | Wallet payment amount
+`config` | object | yes | Payment provider configuration
 
 **Apple Pay example**
 ```javascript
