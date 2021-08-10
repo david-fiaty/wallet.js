@@ -16,10 +16,10 @@ Create the button that will trigger the payment action:
 <button id="wallet" type="button"></button>
 ```
 
-## Wallet initialization 
+## Wallet configuration 
 The **config** option takes parameters for a specific payment method. The examples below use the minimum requirements for a wallet payment configuration.
 
-**Wallet initialization example**
+**Wallet initialization**
 ```javascript
 var wallet = new Wallet('#wallet', {
     type: 'payment_method',
@@ -31,14 +31,15 @@ var wallet = new Wallet('#wallet', {
 ```
 The **type** and **config** options are required upon initialization. The **amount** option can be provided when initializing the wallet, or at a later stage.
 
-**Wallet configuration options**
+**Wallet options**
 Option name | Type | Required | Description
 :---------- | :---- | :------- | :-----------
 `type` | string  | yes | Wallet payment type
 `amount` | float  | yes | Wallet payment amount
 `config` | object | yes | Payment provider configuration
 
-**Apple Pay initialization example**
+## Apple Pay configuration 
+**Apple Pay initialization**
 ```javascript
 var wallet = new Wallet('#wallet', {
     type: 'applepay',
@@ -50,14 +51,17 @@ var wallet = new Wallet('#wallet', {
     },
 });
 ```
-**Apple Pay configuration options**
+
+**Apple Pay options**
 Option name | Type | Required | Description
 :---------- | :---- | :------- | :-----------
 `merchantId` | string | yes | Merchant ID
 `currencyCode` | string | yes | Payment currency code
 `validationUrl` | string | yes | Validation URL
 
-**Google Pay initialization example**
+
+## Google Pay configuration 
+**Google Pay initialization**
 ```javascript
 var wallet = new Wallet('#wallet', {
     type: 'googlepay',
@@ -70,7 +74,7 @@ var wallet = new Wallet('#wallet', {
 });
 ```
 
-**Google Pay configuration options**
+**Google Pay options**
 Option name | Type | Required | Description
 :---------- | :---- | :------- | :-----------
 `merchantId` | string | yes | Merchant ID
