@@ -28,7 +28,9 @@ var wallet = new Wallet('#wallet', {
 });
 ```
 
-The **type** and **config** options are required upon initialization. The **amount** option can be provided when initializing the wallet, or at a later stage.
+The **type** and **config** options are required upon initialization. 
+
+The **amount** option can be provided when initializing the wallet, or at a later stage.
 
 ## Supported payment methods
 * Apple Pay
