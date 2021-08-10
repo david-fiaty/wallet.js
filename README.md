@@ -33,6 +33,13 @@ The **type** and **config** options are required upon initialization. The **amou
 ## Wallet initialization 
 The **config** option takes parameters for a specific payment method. The examples below use the minimum requirements for a wallet payment configuration.
 
+**Global configuration**
+Option name | Type | Required | Description
+:---------- | :---- | :------- | :-----------
+type | string  | yes | Wallet payment type
+amount | float  | yes | Wallet payment amount
+config | object | yes | Payment provider configuration
+
 **Apple Pay example**
 ```javascript
 var wallet = new Wallet('#wallet', {
@@ -45,6 +52,13 @@ var wallet = new Wallet('#wallet', {
     },
 });
 ```
+
+**Apple Pay configuration**
+Option name | Type | Required | Description
+:---------- | :---- | :------- | :-----------
+merchantId | string | yes | Merchant ID
+currencyCode | string | yes | Payment currency code
+validationUrl | string | yes | Validation URL
 
 **Google Pay example**
 ```javascript
@@ -59,24 +73,13 @@ var wallet = new Wallet('#wallet', {
 });
 ```
 
-## Configuration options
-**Global configuration**
-Option name | Type | Required | Description
-:---------- | :---- | :------- | :-----------
-type | string  | yes | Wallet payment type
-amount | float  | yes | Wallet payment amount
-config | object | yes | Payment provider configuration
-
-**Apple Pay configuration**
-Option name | Type | Required | Description
-:---------- | :---- | :------- | :-----------
-merchantId | string | yes | Merchant ID
-currencyCode | string | yes | Payment currency code
-validationUrl | string | yes | Validation URL
-
 **Google Pay configuration**
 Option name | Type | Required | Description
 :---------- | :---- | :------- | :-----------
 merchantId | string | yes | Merchant ID
 currencyCode | string | yes | Payment currency code
 gatewayName | string | yes | Payment configuration
+
+
+
+
