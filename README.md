@@ -52,8 +52,6 @@ var wallet = new Wallet('#wallet', {
     },
 });
 ```
-
-**Apple Pay configuration**
 Option name | Type | Required | Description
 :---------- | :---- | :------- | :-----------
 merchantId | string | yes | Merchant ID
@@ -73,7 +71,6 @@ var wallet = new Wallet('#wallet', {
 });
 ```
 
-**Google Pay configuration**
 Option name | Type | Required | Description
 :---------- | :---- | :------- | :-----------
 merchantId | string | yes | Merchant ID
