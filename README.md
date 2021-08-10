@@ -66,23 +66,23 @@ var wallet = new Wallet('#wallet', {
 ## Wallet configuration
 The following wallet configuration options are available on initialization:
 
-Name | Type | Default | Required | Description
+Name | Type | Required | Description
 ------ | ---- | ------- | ------- | -----------
-type | string | null | yes | Payment type
-amount | float | null | no | Payment amount
-config | object | null | yes | Payment configuration
+type | string  | yes | Payment type
+amount | float  | no | Payment amount
+config | object | yes | Payment configuration
 
 ### Apple Pay configuration
 
-Name | Type | Default | Required | Description
+Name | Type | Required | Description
 ------ | ---- | ------- | ------- | -----------
-type | string | null | yes | Payment type
-amount | float | null | no | Payment amount
-config | object | null | yes | Payment configuration
+merchantId | string | yes | Payment type
+currencyCode | float | no | Payment amount
+validationUrl | object | yes | Payment configuration
 
 ### Google Pay configuration
-Name | Type | Default | Required | Description
+Name | Type | Required | Description
 ------ | ---- | ------- | ------- | -----------
-type | string | null | yes | Payment type
-amount | float | null | no | Payment amount
-config | object | null | yes | Payment configuration
+merchantId | string | yes | Payment type
+currencyCode | float | no | Payment amount
+gatewayName | object | yes | Payment configuration
