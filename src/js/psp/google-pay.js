@@ -53,7 +53,10 @@ module.exports = class GooglePay extends Payment {
 
     // Button event
     button.addEventListener('click', () => {
+      // Prepare payment
       self.preparePayment();
+
+      // Request payment
       self.requestPayment();
     });
 
@@ -75,7 +78,11 @@ module.exports = class GooglePay extends Payment {
       .then(
         (response) => {
           if (response.result) {
+            // Prefetch data
             self.prefetchPaymentData();
+
+            // Payment ready event
+            self.onPaymentReady(response);
           }
         },
       )
