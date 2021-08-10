@@ -90,7 +90,7 @@ module.exports = class ApplePay extends Payment {
           }
 
           // Payment ready event
-          self.onPaymentReady(canMakePayments);
+          self.onPaymentLoaded(canMakePayments);
         },
       ).catch(
         (error) => {

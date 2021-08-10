@@ -82,7 +82,7 @@ module.exports = class GooglePay extends Payment {
             self.prefetchPaymentData();
 
             // Payment ready event
-            self.onPaymentReady(response);
+            self.onPaymentLoaded(response);
           }
         },
       )
