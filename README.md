@@ -19,7 +19,13 @@ Create the button that will trigger the payment action:
 Initialize the wallet:
 
 ```javascript
-    var test = new Pay();
+var wallet = new Wallet('#wallet', {
+    type: 'payment_method',
+    amount: 11.00,
+    config: {
+        // Payment configuration
+    }
+});
 ```
 
 ## Supported payment methods
