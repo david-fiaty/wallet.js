@@ -226,4 +226,8 @@ module.exports = class ApplePay extends Payment {
             }
         );
     }
+
+    getLineItems () {
+        return [];
+    }
 }
