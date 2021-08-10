@@ -19,15 +19,6 @@ module.exports = {
         use: ['babel-loader'],
       },
       {
-        enforce: 'pre',
-        test: /\.js?$/,
-        loader: ['eslint-loader'],
-        exclude: /node_modules/,
-        options: {
-          fix: true,
-        }, 
-      },
-      {
         test: /\.css$/i,
         use: ['style-loader', 'css-loader'],
       },
