@@ -75,7 +75,7 @@ var wallet = new Wallet('#wallet', {
 
 **Required options**
 Option name | Type | Description
-:---------- | :---- :-----------
+:---------- | :---- | :-----------
 `merchantId` | string | Merchant ID
 `currencyCode` | string | Payment currency code
 `gatewayName` | string | Payment configuration
