@@ -73,6 +73,7 @@ amount | float  | no | Payment amount
 config | object | yes | Payment configuration
 
 ### Apple Pay configuration
+The following Apple Pay configuration options are available on initialization:
 
 Name | Type | Required | Description
 ------ | ---- | ------- | -----------
@@ -81,6 +82,8 @@ currencyCode | float | no | Payment amount
 validationUrl | object | yes | Payment configuration
 
 ### Google Pay configuration
+The following Google Pay configuration options are available on initialization:
+
 Name | Type | Required | Description
 ------ | ---- | ------- | -----------
 merchantId | string | yes | Payment type
