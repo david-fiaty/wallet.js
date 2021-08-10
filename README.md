@@ -31,7 +31,7 @@ var wallet = new Wallet('#wallet', {
 The **type** and **config** options are required upon initialization. The **amount** option can be provided when initializing the wallet, or at a later stage.
 
 ## Wallet initialization 
-The **config** option takes parameters for a specific payment method. The examples below use the minimum required for a wallet payment configuration.
+The **config** option takes parameters for a specific payment method. The examples below use the minimum requirements for a wallet payment configuration.
 
 ### Google Pay
 ```javascript
@@ -59,7 +59,7 @@ var wallet = new Wallet('#wallet', {
 });
 ```
 
-### Payment configuration
+## Configuration options
 The following wallet configuration options are available on initialization:
 
 Name | Type | Required | Description
