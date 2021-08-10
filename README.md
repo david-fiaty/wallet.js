@@ -34,7 +34,7 @@ var wallet = new Wallet('#wallet', {
 
 The **type** and **config** options are required upon initialization. The **amount** option can be provided when initializing the wallet, or at a later stage.
 
-## Payment configuration 
+## Wallet initialization 
 The **config** option takes parameters for a specific payment method. The examples below use the minimum required for a wallet payment configuration.
 
 ### Google Pay
@@ -63,7 +63,7 @@ var wallet = new Wallet('#wallet', {
 });
 ```
 
-## Wallet initialization
+### Payment configuration
 The following wallet configuration options are available on initialization:
 
 Name | Type | Required | Description
@@ -72,7 +72,7 @@ type | string  | yes | Payment type
 amount | float  | no | Payment amount
 config | object | yes | Payment configuration
 
-### Apple Pay configuration
+#### Apple Pay
 The following Apple Pay configuration options are available on initialization:
 
 Name | Type | Required | Description
@@ -81,7 +81,7 @@ merchantId | string | yes | Payment type
 currencyCode | float | no | Payment amount
 validationUrl | object | yes | Payment configuration
 
-### Google Pay configuration
+#### Google Pay configuration
 The following Google Pay configuration options are available on initialization:
 
 Name | Type | Required | Description
