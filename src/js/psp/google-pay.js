@@ -157,6 +157,7 @@ module.exports = class GooglePay extends Payment {
         allowedCardNetworks: this.params.config.allowedCardNetworks,
       },
       transactionInfo: {
+        totalPriceStatus: this.params.config.totalPriceStatus,
         currencyCode: this.params.config.currencyCode,
       },
     };
