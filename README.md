@@ -62,21 +62,21 @@ var wallet = new Wallet('#wallet', {
 ## Configuration options
 **Global**
 Name | Type | Required | Description
------- | ---- | ------- | -----------
+:------ | :---- | :------- | :-----------
 type | string  | yes | Wallet payment type
 amount | float  | no | Wallet payment amount
 config | object | yes | Payment provider configuration
 
 **Apple Pay**
 Name | Type | Required | Description
------- | ---- | ------- | -----------
+:------ | :---- | :------- | :-----------
 merchantId | string | yes | Merchant ID
 currencyCode | string | yes | Payment currency code
 validationUrl | string | yes | Validation URL
 
 **Google Pay**
 Name | Type | Required | Description
------- | ---- | ------- | -----------
+:------ | :---- | :------- | :-----------
 merchantId | string | yes | Merchant ID
 currencyCode | string | yes | Payment currency code
 gatewayName | string | yes | Payment configuration
