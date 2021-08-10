@@ -1,20 +1,41 @@
- <script src="wallet.js"></script>
+<script src="wallet.js"></script>
 
-
- <button id="wallet" type="button"></button>
+<button id="wallet" type="button"></button>
 
 <script>
+/*
 var wallet = new Wallet('#wallet', {
     type: 'applepay',
-    debug: true,
+    amount: 11.00,
+    config: {
+        merchantId: 'pk_test_f4be3224-70a5-4441-be9b-abb59e3fcd31',
+        windowTitle: 'Apple Pay transaction window', 
+        currencyCode: 'USD',  
+        validationUrl: 'https://validation-url', 
+        supportedNetworks: [
+            'amex',
+            'masterCard',
+            'visa',
+        ],
+        merchantCapabilities: [
+            'supportsCredit',
+            'supportsDebit',
+        ],
+    },
+});
+
+*/
+
+var wallet = new Wallet('#wallet', {
+    type: 'googlepay',
+    amount: 11.00,
     config: {
         merchantId: 'pk_test_f4be3224-70a5-4441-be9b-abb59e3fcd31',
         gatewayName: 'checkoutltd',
-    },
-    payment: {
         currencyCode: 'USD',
-        amount: '11.00',
-    }
+    },
 });
+
+
 
 </script>
