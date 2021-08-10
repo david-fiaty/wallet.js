@@ -22,6 +22,6 @@ Initialize the wallet:
     var test = new Pay();
 ```
 
-## Supported payments
+## Supported payment methods
 * Apple Pay
 * Google Pay
