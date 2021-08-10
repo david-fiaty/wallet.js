@@ -82,7 +82,7 @@ module.exports = class GooglePay extends Payment {
             self.prefetchPaymentData();
 
             // Payment ready event
-            self.onPaymentLoaded(response);
+            self.onClientLoaded(response);
           }
         },
       )
@@ -112,6 +112,7 @@ module.exports = class GooglePay extends Payment {
     // Load the payment data
     this.client.loadPaymentData(paymentData).then(
       (paymentData) => {
+        self.onRequestReady(paymentData);
         self.sendRequest(paymentData);
       },
     ).catch(
@@ -119,22 +120,6 @@ module.exports = class GooglePay extends Payment {
         console.log(error);
       },
     );
-  }
-
-  sendRequest(paymentData) {
-    // Prepare the payload
-    /*
-        var payload = {
-            cardToken: {
-                signature: JSON.parse(paymentData.paymentMethodToken.token).signature,
-                protocolVersion: JSON.parse(paymentData.paymentMethodToken.token).protocolVersion,
-                signedMessage: JSON.parse(paymentData.paymentMethodToken.token).signedMessage,
-            },
-        };
-        */
-
-    // Send the request
-    console.log(paymentData);
   }
 
   prefetchPaymentData() {

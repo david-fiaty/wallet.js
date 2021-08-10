@@ -90,7 +90,7 @@ module.exports = class ApplePay extends Payment {
           }
 
           // Payment ready event
-          self.onPaymentLoaded(canMakePayments);
+          self.onClientLoaded(canMakePayments);
         },
       ).catch(
         (error) => {
@@ -105,19 +105,23 @@ module.exports = class ApplePay extends Payment {
   requestPayment() {
     // Prepare variables
     const self = this;
+    const paymentData = {
+        currencyCode: this.params.config.currencyCode,
+        countryCode: this.params.config.countryCode,
+        total: {
+            label: this.params.config.displayName,
+            amount: this.amount,
+        },
+        supportedNetworks: this.params.config.supportedNetworks,
+        merchantCapabilities: this.params.config.merchantCapabilities,
+    };
 
     // Start the payment session
-    const session = new ApplePaySession(1, {
-      currencyCode: this.params.config.currencyCode,
-      countryCode: this.params.config.countryCode,
-      total: {
-        label: this.params.config.displayName,
-        amount: this.amount,
-      },
-      supportedNetworks: this.params.config.supportedNetworks,
-      merchantCapabilities: this.params.config.merchantCapabilities,
-    });
+    const session = new ApplePaySession(1, paymentData);
 
+    // Payment ready event
+    self.onRequestReady(paymentData);
+    
     // Merchant session validation
     session.onvalidatemerchant = function (e) {
       const promise = self.validateSession(e);
@@ -191,7 +195,7 @@ module.exports = class ApplePay extends Payment {
       };
 
       // Send the request
-      const promise = self.sendPaymentRequest(payload);
+      const promise = self.sendRequest(payload);
       promise.then(
         (success) => {
           let status;
@@ -204,7 +208,7 @@ module.exports = class ApplePay extends Payment {
           session.completePayment(status);
 
           if (success) {
-            // Redirect to success page
+            // Success
           }
         },
       ).catch(
