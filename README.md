@@ -16,8 +16,10 @@ Create the button that will trigger the payment action:
 <button id="wallet" type="button"></button>
 ```
 
-Initialize the wallet:
+## Wallet initialization 
+The **config** option takes parameters for a specific payment method. The examples below use the minimum requirements for a wallet payment configuration.
 
+**Wallet initialization example**
 ```javascript
 var wallet = new Wallet('#wallet', {
     type: 'payment_method',
@@ -27,20 +29,16 @@ var wallet = new Wallet('#wallet', {
     }
 });
 ```
-
 The **type** and **config** options are required upon initialization. The **amount** option can be provided when initializing the wallet, or at a later stage.
 
-## Wallet initialization 
-The **config** option takes parameters for a specific payment method. The examples below use the minimum requirements for a wallet payment configuration.
-
-**Global configuration**
+**Wallet configuration options**
 Option name | Type | Required | Description
 :---------- | :---- | :------- | :-----------
 `type` | string  | yes | Wallet payment type
 `amount` | float  | yes | Wallet payment amount
 `config` | object | yes | Payment provider configuration
 
-**Apple Pay example**
+**Apple Pay initialization example**
 ```javascript
 var wallet = new Wallet('#wallet', {
     type: 'applepay',
@@ -52,8 +50,14 @@ var wallet = new Wallet('#wallet', {
     },
 });
 ```
+**Apple Pay configuration options**
+Option name | Type | Required | Description
+:---------- | :---- | :------- | :-----------
+`merchantId` | string | yes | Merchant ID
+`currencyCode` | string | yes | Payment currency code
+`validationUrl` | string | yes | Validation URL
 
-**Google Pay example**
+**Google Pay initialization example**
 ```javascript
 var wallet = new Wallet('#wallet', {
     type: 'googlepay',
@@ -66,16 +70,7 @@ var wallet = new Wallet('#wallet', {
 });
 ```
 
-## Configuration options
-
-**Apple Pay configuration**
-Option name | Type | Required | Description
-:---------- | :---- | :------- | :-----------
-`merchantId` | string | yes | Merchant ID
-`currencyCode` | string | yes | Payment currency code
-`validationUrl` | string | yes | Validation URL
-
-**Google Pay configuration**
+**Google Pay configuration options**
 Option name | Type | Required | Description
 :---------- | :---- | :------- | :-----------
 `merchantId` | string | yes | Merchant ID
