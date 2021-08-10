@@ -66,6 +66,9 @@ module.exports = class ApplePay extends Payment {
   }
 
   preparePayment() {
+    // Prepare variables
+    let self = this;
+
     // Check session
     try {
       if (window.ApplePaySession) {
@@ -83,7 +86,11 @@ module.exports = class ApplePay extends Payment {
         (canMakePayments) => {
           if (!canMakePayments) {
             helper.logError('Apple Pay is available but not currently enabled');
+            return;
           }
+
+          // Payment ready event
+          self.onPaymentReady(canMakePayments);
         },
       ).catch(
         (error) => {

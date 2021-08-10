@@ -68,7 +68,7 @@ module.exports = class GooglePay extends Payment {
 
   preparePayment() {
     // Variables
-    const self = this;
+    let self = this;
 
     // Payment client
     this.client = this.getPaymentClient();

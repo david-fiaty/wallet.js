@@ -10,7 +10,7 @@ module.exports = class Payment {
     this.currencyCode = currencyCode;
   }
 
-  onPaymentReady (data) {
-    console.log(data);
+  onPaymentReady (status) {
+    console.log(status);
   }
 };
