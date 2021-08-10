@@ -53,7 +53,10 @@ module.exports = class GooglePay extends Payment {
 
     // Button event
     button.addEventListener('click', () => {
+      // Prepare payment
       self.preparePayment();
+
+      // Request payment
       self.requestPayment();
     });
 
@@ -65,7 +68,7 @@ module.exports = class GooglePay extends Payment {
 
   preparePayment() {
     // Variables
-    const self = this;
+    let self = this;
 
     // Payment client
     this.client = this.getPaymentClient();
@@ -75,7 +78,11 @@ module.exports = class GooglePay extends Payment {
       .then(
         (response) => {
           if (response.result) {
+            // Prefetch data
             self.prefetchPaymentData();
+
+            // Payment ready event
+            self.onClientLoaded(response);
           }
         },
       )
@@ -105,6 +112,7 @@ module.exports = class GooglePay extends Payment {
     // Load the payment data
     this.client.loadPaymentData(paymentData).then(
       (paymentData) => {
+        self.onRequestReady(paymentData);
         self.sendRequest(paymentData);
       },
     ).catch(
@@ -112,22 +120,6 @@ module.exports = class GooglePay extends Payment {
         console.log(error);
       },
     );
-  }
-
-  sendRequest(paymentData) {
-    // Prepare the payload
-    /*
-        var payload = {
-            cardToken: {
-                signature: JSON.parse(paymentData.paymentMethodToken.token).signature,
-                protocolVersion: JSON.parse(paymentData.paymentMethodToken.token).protocolVersion,
-                signedMessage: JSON.parse(paymentData.paymentMethodToken.token).signedMessage,
-            },
-        };
-        */
-
-    // Send the request
-    console.log(paymentData);
   }
 
   prefetchPaymentData() {
@@ -157,6 +149,7 @@ module.exports = class GooglePay extends Payment {
         allowedCardNetworks: this.params.config.allowedCardNetworks,
       },
       transactionInfo: {
+        totalPriceStatus: this.params.config.totalPriceStatus,
         currencyCode: this.params.config.currencyCode,
       },
     };
