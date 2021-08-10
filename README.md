@@ -10,7 +10,7 @@ Call the wallet.js Javascript file from your HTML page:
 <script src="wallet.js"></script>
 ```
 
-Create an HTML button that will trigger the payment action:
+Create a button that will trigger the payment action:
 
 ```html
 <button id="wallet" type="button"></button>
