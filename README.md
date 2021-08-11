@@ -31,8 +31,8 @@ var wallet = new Wallet('#wallet', {
 ```
 The **type** and **config** options are required upon initialization. The **amount** option can be provided when initializing the wallet, or at a later stage.
 
-**Required options**
-Option name | Type | Description
+**Required parameters**
+Name | Type | Description
 :---------- | :---- | :-----------
 `type` | string | Wallet payment type
 `amount` | float | Wallet payment amount
@@ -52,8 +52,8 @@ var wallet = new Wallet('#wallet', {
 });
 ```
 
-**Required options**
-Option name | Type | Description
+**Required parameters**
+Name | Type | Description
 :---------- | :---- | :-----------
 `merchantId` | string | Merchant ID
 `currencyCode` | string | Payment currency code
@@ -73,8 +73,8 @@ var wallet = new Wallet('#wallet', {
 });
 ```
 
-**Required options**
-Option name | Type | Description
+**Required parameters**
+Name | Type | Description
 :---------- | :---- | :-----------
 `merchantId` | string | Merchant ID
 `currencyCode` | string | Payment currency code
