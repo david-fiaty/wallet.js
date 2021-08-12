@@ -59,6 +59,13 @@ Name | Type | Description
 `currencyCode` | string | Payment currency code
 `validationUrl` | string | Validation URL
 
+**Optional parameters**
+Name | Type | Description
+:---------- | :---- | :-----------
+`merchantId` | string | Merchant ID
+`currencyCode` | string | Payment currency code
+`validationUrl` | string | Validation URL
+
 ## Google Pay configuration 
 **Google Pay initialization**
 ```javascript
