@@ -88,6 +88,6 @@ Name | Type | Description
 `gatewayName` | string | Payment configuration
 
 ## License
-This sofware is released under the GNU GPL3 license. See <http://www.gnu.org/licenses> for more information.<br>
+This software is released under the GNU GPL3 license. See <http://www.gnu.org/licenses> for more information.<br>
 Copyright (C) 2021 David Fiaty, all rights reserved.<br>
 [www.davidfiaty.com](https://www.davidfiaty.com "David Fiaty")
